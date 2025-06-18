@@ -1,0 +1,15 @@
+# Obsidian specific files
+.obsidian/workspace
+.obsidian/workspace-mobile.json
+.obsidian/publish.json
+.obsidian/plugins/*/data.json
+.obsidian/*.hotreload
+.obsidian/app.json
+.obsidian/graph.json
+.obsidian/usage.json
+
+# Other common ignore patterns
+*.tmp
+*.bak
+*.DS_Store
+Thumbs.db
