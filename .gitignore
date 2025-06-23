@@ -12,4 +12,13 @@
 *.tmp
 *.bak
 *.DS_Store
-Thumbs.dbnode_modules/
+Thumbs.db
+node_modules/
+
+# 個人情報を含む可能性があるファイル
+*.log
+*.cache
+
+# Obsidianの追加除外項目
+.obsidian/workspace.json
+.obsidian/cache/

@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "92fba5647ba1c9ad",
+        "id": "b262d864bf68b867",
         "type": "tabs",
         "children": [
           {
-            "id": "227ae05b5cfdede2",
+            "id": "0576b489e6b16eb1",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -216,7 +216,7 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "578e263f04a0a7a7",
+  "active": "0576b489e6b16eb1",
   "lastOpenFiles": [
     "satoshi-saving-notebook/satoshi-saving-notebook/postcss.config.js",
     "satoshi-saving-notebook/satoshi-saving-notebook/tailwind.config.js",
