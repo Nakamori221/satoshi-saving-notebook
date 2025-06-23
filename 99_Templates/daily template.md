@@ -1,15 +1,10 @@
 ---
-tags: [daily, news]
-date: {{date:YYYY-MM-DD}}
+tags:
+  - daily
+  - news
+date: <% tp.date.now("YYYY-MM-DD") %>
+created: <% tp.file.creation_date("YYYY-MM-DD HH:mm") %>
+updated: 2025-06-19T16:12
 ---
-## 今日のニュース
-- [ ] (Tags: #ニュース記事 # )
-- [ ] (Tags: #ニュース記事 # )
 
-## ニュースからの考察
-(考察のTags: #考察 # )
-
-## 今日の振り返り
-
-## Tags (ノート全体)
-#daily 
+<% tp.file.cursor() %>

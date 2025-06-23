@@ -1,0 +1,282 @@
+---
+created: 2025-06-21T16:46
+updated: 2025-06-21T17:41
+---
+# さとし貯金ノート ― 仕様書 **v1.0**
+
+> **開発ターゲット：TypeScript + Next.js + TailwindCSS + Mantine（Claude Code IDE）**  
+> このドキュメントは、2025‑06‑21 までの壁打ち内容を 1 ファイルに統合したものです。  
+> そのまま `docs/spec.md` に配置しても読みやすいよう Markdown を整形しています。
+
+---
+
+## 0. 目次
+1. [プロダクト概要](#1-プロダクト概要)  
+2. [ターゲットペルソナ](#2-ターゲットペルソナ)  
+3. [ユーザー価値](#3-ユーザー価値)  
+4. [MVP機能一覧](#4-MVP機能一覧)  
+5. [機能詳細](#5-機能詳細)  
+6. [UI／UX](#6-uiux)  
+7. [技術スタック](#7-技術スタック)  
+8. [Firestoreスキーマ](#8-firestoreスキーマ)  
+9. [通知アーキテクチャ](#9-通知アーキテクチャ)  
+10. [テスト方針](#10-テスト方針)  
+11. [KPI & アナリティクス](#11-kpi--アナリティクス)  
+12. [開発ロードマップ](#12-開発ロードマップ)  
+13. [GitHub Projects 運用](#13-github-projects-運用)  
+14. [バックログ（MVP後）](#14-バックログmvp後)  
+15. [付録 A：通知メッセージ例](#付録a通知メッセージ例)  
+16. [付録 B：シミュレーション事例テンプレ](#付録bシミュレーション事例テンプレ)
+
+---
+
+## 1. プロダクト概要
+| 項目 | 内容 |
+|------|------|
+| **プロダクト名** | さとし貯金ノート (Satoshi Saving Notebook) |
+| **ワンフレーズ** | **“あと何 sat？” を 3 秒で可視化し、価格変動に合わせて必要積立ペースを自動修正するオフライン完結メモ一体型シミュレーター** |
+| **目的** | BTC の値上がりと円安インフレで「積立額がいつの間にか足りない」を防ぎ、目標 BTC 量（0.1 / 1 BTC 等）を **確実に貯め切る** |
+| **初期スコープ** | ・シングルゴール　・JPY 固定　・API/LINE 通知あり　・クラウド同期 (Firestore) |
+
+---
+
+## 2. ターゲットペルソナ
+| # | 名前 | 年齢/職業 | ゴール | 刺さる理由 |
+|---|------|-----------|--------|------------|
+| P1 | ユウタ | 24／新卒 IT | 0.1 BTC を 5 年 | 残 sat ゲージでゲーム感覚 |
+| P2 | ダイスケ | 35／自営業 | 1 BTC を 3 年 | 変動収入に合わせ**必要月額の再計算** |
+| P3 | ミホ | 40／地方会社員 | 0.5 BTC を 10 年 | 家計と連動したシミュレーション |
+| P4 | タカシ | 55／管理職 | 1 BTC を 10 年 | オフライン保存・生体認証 |
+
+---
+
+## 3. ユーザー価値
+1. **進捗の即時視覚化**  
+   *価格入力 → 残 sat・達成率・予定日が瞬時に更新。*  
+2. **無理のない積立額の提示**  
+   *目標と期限を固定し、最新価格ベースで**必要月額／週額**を自動算出。*  
+3. **モチベーション維持**  
+   *LINE 通知で「残 sat」「必要月額」「鼓舞メッセージ」を 07:00 JST に配信。*  
+
+---
+
+## 4. MVP機能一覧
+| カテゴリ | 機能 | 完了基準 |
+|----------|------|----------|
+| 設定 | 目標 BTC / 期限 / 初期保有 / 給与日(25) / フォントサイズ | UI ↔︎ Firestore |
+| 価格取得 | CoinGecko API (JPY) 1 日1回 Cron | キャッシュ有 |
+| 入力 | 価格手入力・積立額入力・メモ | バリデーション済 |
+| 計算 | 必要月額/週額・残 sat・達成率 | 単体テスト 80 % |
+| ビジュアル | RingProgress＋Badge (Mantine) | SP/PC 両対応 |
+| 通知 | LINE Notify：定期・達成・遅延 | OAuth／Cron 完了 |
+| セキュリティ | Firebase Auth (email) + PIN/生体 | WebAuthn |
+| 退会 | 再認証→アンケート(選択5＋自由)→全削除 | 保存期間1年 |
+| PWA | オフラインキャッシュ・インストールバナー | Lighthouse ≥ 90 |
+| 分析 | Plausible (匿名イベント) | GA無し |
+
+---
+
+## 5. 機能詳細
+### 5.1 入力 & 計算ロジック
+```ts
+getRequiredMonthlyAmount(
+  priceJpy: number,
+  targetBtc: number,
+  currentBtc: number,
+  monthsLeft: number
+): number
+````
+
+- 単位は円。端数は切り上げ（ceil）。
+    
+- `getAchievementRate()` = (currentBtc / targetBtc) × 100
+    
+
+### 5.2 通知ルール
+
+|種類|送信条件|備考|
+|---|---|---|
+|**定期**|毎日 07:00 JST|baseDates[1,25] も同文|
+|**達成祝い**|当月の積立額合計 ≥ 必要月額|月 1 回|
+|**遅延アラート**|達成率 < 50 % が 14 日連続|設定で閾値変更可|
+
+### 5.3 退会アンケート（必須選択肢）
+
+1. 目標達成度
+    
+2. 使いやすさ
+    
+3. 通知頻度
+    
+4. 継続阻害要因
+    
+5. 推奨度 (NPS)
+    
+
+- 自由入力（任意）
+    
+
+---
+
+## 6. UI/UX
+
+```
+┌───────────────────────────────┐
+│ 65% ▶︎ 残 350,000 sat          │ RingProgress
+├───────────────────────────────┤
+│ 必要月額   ¥34,200   🟥         │ Badge 色分 (≤50赤,≤90黄,>90緑)
+│ 達成予定   2028‑03             │
+├───────────────────────────────┤
+│ [価格]  9,800,000  (NumberInput)│
+│ [今月積立]     30,000           │
+├───────────────────────────────┤
+│ 📝 メモ一覧 (最新3件)           │
+│ 2025‑06‑21 ¥30,000 給料日       │
+└───────────────────────────────┘
+```
+
+- **フォント**：`text-3xl lg:text-4xl`
+    
+- **配色**：Mantine `teal / yellow / red`
+    
+
+---
+
+## 7. 技術スタック
+
+|レイヤ|技術|補足|
+|---|---|---|
+|言語|**TypeScript 5**||
+|FW|**Next.js 14 (App Router)**|Vercel 展開|
+|UI|**Mantine v7** + **TailwindCSS**||
+|状態管理|Zustand / TanStack Query||
+|DB|**Cloud Firestore**|Rules v2|
+|認証|Firebase Auth (Email) + WebAuthn|Apple/Google 後付|
+|通知|**LINE Notify** (OAuth2)|token 保存|
+|Cron|**Vercel Cron + Edge Function**|`GET /api/cron`|
+|PWA|next-pwa|オフライン|
+|分析|**Plausible**||
+
+---
+
+## 8. Firestore スキーマ
+
+```text
+users/{uid}
+  profile          : { displayName, fontScale, currency:'JPY', salaryDay:25 }
+  goal             : { targetBtc, deadline, startBtc }
+  reminderSettings : { baseDates:[1,25], delayAlert:true }
+  lineToken        : { token, expiresAt }
+  cache/btcPrice   : { dateISO, priceJpy }
+  feedbackExit     : { q1..q5, freeText, time } // TTL 365d
+
+progress/{uid}/{yyyyMMdd}
+  { btcPrice, depositJpy, memo, createdAt }
+
+examples/{id}
+  { title, targetBtc, deadline, startBtc, monthlyJpy }
+```
+
+---
+
+## 9. 通知アーキテクチャ
+
+```mermaid
+flowchart TD
+  subgraph Client
+    A[ブラウザ/PWA] -- OAuth--> L[LINE 認可URL]
+  end
+  L --callback--> C[API /api/line/callback]
+  C --> F[(Firestore lineToken)]
+  VercelCron --毎日07:00--> FN[/api/notify]
+  FN --> LN[LINE Notify API]
+```
+
+---
+
+## 10. テスト方針
+
+|レイヤ|ツール|目標|
+|---|---|---|
+|計算関数|Jest|**80 %** カバレッジ|
+|Firestore Hook|Jest + @firebase/testing|50 %|
+|UI|React Testing Library|スモーク|
+
+---
+
+## 11. KPI & アナリティクス
+
+|指標|目標値 (β)|
+|---|---|
+|翌日リテンション|**≥ 40 %**|
+|週次アクティブ率|**≥ 30 %**|
+|平均月次入力回数|**≥ 3 回**|
+
+---
+
+## 12. 開発ロードマップ
+
+|Sprint|期間|マイルストーン|
+|---|---|---|
+|S1|Week 1|CoinGecko fetch, Firestore Rules|
+|S2|Week 2|LINE OAuth, ホーム UI|
+|S3|Week 3|通知 Cron, 遅延判定|
+|S4|Week 4|退会＋アンケート, PWA バナー|
+|S5|Week 5|αテスト→修正→β公開|
+
+---
+
+## 13. GitHub Projects 運用
+
+- **Public Roadmap** カラムのみ公開（四半期 OKR / 大機能）
+    
+- Issue/PR は Private。
+    
+- **Analytics bot** が KPI を週次で Roadmap にコメント投稿。
+    
+
+---
+
+## 14. バックログ(MVP後)
+
+|優先|機能|想定課金?|
+|---|---|---|
+|高|USD 切替|Free|
+|高|CSV/PDF エクスポート|Pro|
+|中|自動 DCA API 連携|Pro|
+|中|Web Push / FCM|Free|
+|低|広告非表示 (買切り)|Pro|
+
+---
+
+## 付録 A：通知メッセージ例
+
+`/src/data/messages.json`
+
+```json
+[
+  "コツコツ続けていきましょう！",
+  "今日の積立が未来を作ります 🚀",
+  "焦らず、でも止まらず。",
+  "Great job! その調子です。",
+  "BTC王への道は一歩から 🏆"
+]
+```
+
+---
+
+## 付録 B：シミュレーション事例テンプレ
+
+|ID|タイトル|目標BTC|期限|初期保有|想定月額|
+|---|---|---|---|---|---|
+|ex1|新卒5年で0.1BTC|0.1|+5 年|0|15,000|
+|ex2|3年で1BTC|1|+3 年|0.2|250,000|
+|ex3|学費用0.5BTC|0.5|+10 年|0.05|25,000|
+|ex4|老後1BTC|1|+10 年|0.1|60,000|
+
+---
+
+### 📌 以上で **MVP 仕様確定**
+
+Issue 化 → Claude Code で実装開始の準備が整いました。  
+不明点・追加要望があれば `@spec-owner` をメンションしてお知らせください！

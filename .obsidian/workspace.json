@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "c77c0c1a5a0c2194",
+        "id": "92fba5647ba1c9ad",
         "type": "tabs",
         "children": [
           {
-            "id": "0f00c6a740ca0c9f",
+            "id": "227ae05b5cfdede2",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "99_Templates/tag_rule.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "tag_rule"
+              "title": "新規タブ"
             }
           }
         ]
@@ -33,7 +29,7 @@
       {
         "id": "1ed02d6c33e962ff",
         "type": "tabs",
-        "dimension": 72.42424242424242,
+        "dimension": 79.77755308392315,
         "children": [
           {
             "id": "578e263f04a0a7a7",
@@ -80,10 +76,10 @@
       {
         "id": "9737899f785f55c8",
         "type": "tabs",
-        "dimension": 27.575757575757574,
+        "dimension": 20.222446916076844,
         "children": [
           {
-            "id": "bd91e6a53eed5372",
+            "id": "d07d5908e6fb6f2b",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -96,7 +92,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 247.5
+    "width": 406.5
   },
   "right": {
     "id": "d0378013f13c7bc6",
@@ -105,7 +101,7 @@
       {
         "id": "4bee4177e2583500",
         "type": "tabs",
-        "dimension": 67.73255813953489,
+        "dimension": 60.562015503875976,
         "children": [
           {
             "id": "5a32518f09dcabae",
@@ -168,17 +164,31 @@
               "icon": "lucide-list",
               "title": "動的相関図構築に学ぶ他業界の事例のアウトライン"
             }
+          },
+          {
+            "id": "3c7b03bbbfbcc257",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "すべてのプロパティ"
+            }
           }
         ],
         "currentTab": 2
       },
       {
-        "id": "06c3e88f5eda36ee",
+        "id": "d0c060c4ef15cf46",
         "type": "tabs",
-        "dimension": 32.26744186046512,
+        "dimension": 39.43798449612403,
         "children": [
           {
-            "id": "c525da3d4b39baa1",
+            "id": "619cd876730715e1",
             "type": "leaf",
             "state": {
               "type": "calendar",
@@ -191,60 +201,69 @@
       }
     ],
     "direction": "horizontal",
-    "width": 434.5
+    "width": 357.5
   },
   "left-ribbon": {
     "hiddenItems": {
-      "omnisearch:Omnisearch": false,
       "switcher:クイックスイッチャーを開く": false,
       "graph:グラフビューを開く": false,
       "canvas:新規キャンバスを作成": false,
       "templates:テンプレートを挿入": false,
       "command-palette:コマンドパレットを開く": false,
       "audio-recorder:録音の開始/停止": false,
-      "daily-notes:今日のデイリーノートを開く": false
+      "daily-notes:今日のデイリーノートを開く": false,
+      "omnisearch:Omnisearch": false,
+      "templater-obsidian:Templater": false
     }
   },
   "active": "578e263f04a0a7a7",
   "lastOpenFiles": [
-    "00_Inbox/「Sell Pressure（売り圧）」に関する投稿.md",
-    "50_Knowledge_Base/Crypto_Tips",
-    "60_Private_Work/Learning_Log/📱天才的アプリ戦略とは？.md",
-    "00_Inbox/【💵ステーブルコインが“お金”になる3つの鍵｜a16z要約】.md",
-    "40_Resources/References/06_June/Stablecoin/TSUDOI_ステーブルコイン運用戦略ガイド.md",
-    "40_Resources/References/06_June/Stablecoin/Stablecoin 運用ガイド作成メモ.md",
-    "40_Resources/References/06_June/Stablecoin/Gemini DR Stablecion運用ガイド.md",
-    "99_Templates/daily template.md",
-    "50_Knowledge_Base/Prompt_Library/🧠 ChatGPTおすすめ｜論理的思考を鍛えるプロンプト20選.md",
-    "50_Knowledge_Base/Prompt_Library/機関投資家レベルのリサーチ Prompt.md",
-    "99_Templates",
-    "60_Private_Work/Financial_Notes",
-    "60_Private_Work/Learning_Log",
-    "60_Private_Work/Small_Business_Ideas",
-    "60_Private_Work/無題のフォルダ/無題のフォルダ",
-    "60_Private_Work/Personal_Projects",
-    "50_Knowledge_Base/Prompt_Library",
-    "50_Knowledge_Base/AI_Tools_HowTo",
-    "50_Knowledge_Base/Cursor_Tips",
-    "01_DailyNotes/01_DailyNotes 1/2025-06-13.md",
-    "01_DailyNotes/01_DailyNotes 1/2025-06-03.md",
-    "01_DailyNotes/01_DailyNotes 1/2025-06-04.md",
-    "01_DailyNotes/01_DailyNotes 1/2025-05-31.md",
-    "01_DailyNotes/01_DailyNotes 1/2025-06-01.md",
-    "00_Inbox/需要側トークノミクス評価フレームワーク.md",
-    "00_Inbox/より良いトレードの見極め方.md",
-    "00_Inbox/需要側トークノミクス評価フレームワーク）プロンプト化.md",
-    "00_Inbox/Sky（旧MakerDAO）が投資対象として「シンプル」である理由とは？.md",
-    "00_Inbox/Stablecoins and the Collapse of the Legacy Payment Model.md",
-    "00_Inbox/AICPA（米公認会計士協会）によるステーブルコイン運用基準案の発表内容.md",
-    "00_Inbox/RWA×Web3によるプライマリー投資の民主化の第一歩となるか.md",
-    "00_Inbox/AIツールの効果的な使用に関する実用的なアドバイス.md",
-    "00_Inbox/Cursor で100日間アプリを作り続けた中で、全然うまくいかなかったこと.md",
-    "00_Inbox/Franklin Templetonによる「トークン化マネーマーケットファンド」の最新動向.md",
-    "00_Inbox/GoogleとAppleのステーブルコイン参入がDeFi市場に与える影響：包括的分析レポート.md",
-    "60_Private_Work/Learning_Log/自動化テンプレ案/Pasted image 20250606082934.png",
-    "00_Inbox/20250603/Pasted image 20250603124942.png",
-    "Pasted image 20250603124939.png",
+    "satoshi-saving-notebook/satoshi-saving-notebook/postcss.config.js",
+    "satoshi-saving-notebook/satoshi-saving-notebook/tailwind.config.js",
+    "satoshi-saving-notebook/satoshi-saving-notebook/next.config.js",
+    "Clippings/NetXD Unveils End-to-End TradFi-DeFi Infrastructure Platform.md",
+    "50_Knowledge_Base/Business_Tips/ビジネスアイディアアプローチ方法.md",
+    "satoshi-saving-notebook/satoshi-saving-notebook/vercel.json",
+    "Clippings/Uniswap, Morpho and others collaborate on Web3SOC, a framework for determining a DeFi project's 'readiness for institutional partnerships'.md",
+    "Clippings/Texas Governor Greg Abbott signs strategic Bitcoin reserve bill into law.md",
+    "「Pump.fun系ミームコインの卒業価格（$69K mcap）」とは.md",
+    "Solanaでのトークンローンチが熱い理由.md",
+    "「さとし貯金ノート」のマネタイズ戦略.md",
+    "60_Private_Work/Personal_Projects/さとし貯金/Claude Codeで実用的なWebサービスを作る｜himara2.md",
+    "satoshi-saving-notebook/satoshi-saving-notebook/public/icon-generator.html",
+    "satoshi-saving-notebook/satoshi-saving-notebook/src/components/PWASetup.tsx",
+    "satoshi-saving-notebook/satoshi-saving-notebook/src/lib/pwa.ts",
+    "satoshi-saving-notebook/satoshi-saving-notebook/src/components/PWAInstaller.tsx",
+    "satoshi-saving-notebook/satoshi-saving-notebook/public/sw.js",
+    "satoshi-saving-notebook/satoshi-saving-notebook/public/manifest.json",
+    "satoshi-saving-notebook/firestore.rules",
+    "satoshi-saving-notebook/docs/CALCULATION_LOGIC.md",
+    "satoshi-saving-notebook/docs/spec.md",
+    "satoshi-saving-notebook/node_modules/@tanstack/react-query/build/codemods/src/v5/keep-previous-data/README.md",
+    "satoshi-saving-notebook/node_modules/websocket-extensions/lib/pipeline/README.md",
+    "satoshi-saving-notebook/node_modules/protobufjs/ext/descriptor/README.md",
+    "satoshi-saving-notebook/node_modules/protobufjs/ext/debug/README.md",
+    "satoshi-saving-notebook/node_modules/axios/lib/helpers/README.md",
+    "satoshi-saving-notebook/node_modules/axios/lib/env/README.md",
+    "satoshi-saving-notebook/node_modules/axios/lib/core/README.md",
+    "satoshi-saving-notebook/node_modules/axios/lib/adapters/README.md",
+    "satoshi-saving-notebook/node_modules/protobufjs/google/README.md",
+    "satoshi-saving-notebook/node_modules/@protobufjs/base64/README.md",
+    "satoshi-saving-notebook/node_modules/@types/node/README.md",
+    "satoshi-saving-notebook/node_modules/@protobufjs/pool/README.md",
+    "satoshi-saving-notebook/node_modules/@protobufjs/inquire/README.md",
+    "satoshi-saving-notebook/node_modules/@tanstack/react-query/README.md",
+    "satoshi-saving-notebook/node_modules/@protobufjs/utf8/README.md",
+    "satoshi-saving-notebook/satoshi-saving-notebook/node_modules/@tabler/icons/categories/outline/Zodiac/zodiac-sagittarius.svg",
+    "satoshi-saving-notebook/satoshi-saving-notebook/node_modules/@tabler/icons/categories/outline/Zodiac/zodiac-scorpio.svg",
+    "satoshi-saving-notebook/satoshi-saving-notebook/node_modules/@tabler/icons/categories/outline/Zodiac/zodiac-virgo.svg",
+    "satoshi-saving-notebook/satoshi-saving-notebook/node_modules/@tabler/icons/categories/outline/Zodiac/zodiac-taurus.svg",
+    "satoshi-saving-notebook/satoshi-saving-notebook/node_modules/@tabler/icons/categories/outline/Zodiac/zodiac-pisces.svg",
+    "satoshi-saving-notebook/satoshi-saving-notebook/node_modules/@tabler/icons/categories/outline/Zodiac/zodiac-libra.svg",
+    "satoshi-saving-notebook/satoshi-saving-notebook/node_modules/@tabler/icons/categories/outline/Zodiac/zodiac-leo.svg",
+    "satoshi-saving-notebook/satoshi-saving-notebook/node_modules/@tabler/icons/categories/outline/Zodiac/zodiac-gemini.svg",
+    "satoshi-saving-notebook/satoshi-saving-notebook/node_modules/@tabler/icons/categories/outline/Zodiac/zodiac-aries.svg",
+    "satoshi-saving-notebook/satoshi-saving-notebook/node_modules/@tabler/icons/categories/outline/Zodiac/zodiac-capricorn.svg",
     "無題のファイル.canvas"
   ]
 }
