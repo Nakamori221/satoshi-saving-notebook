@@ -21,10 +21,12 @@ import {
   LoadingOverlay,
   Alert,
   List,
+  ActionIcon,
 } from '@mantine/core';
-import { IconCoin, IconTarget, IconCalendar, IconPlus } from '@tabler/icons-react';
+import { IconCoin, IconTarget, IconCalendar, IconPlus, IconSettings } from '@tabler/icons-react';
 import { notifications } from '@mantine/notifications';
 import PWAInstaller from '@/components/PWAInstaller';
+import GoalSettingsModal from '@/components/GoalSettingsModal';
 import {
   getRequiredMonthlyAmount,
   getRequiredWeeklyAmount,
@@ -59,6 +61,7 @@ export default function SavingsCalculatorWithData() {
   const [isLoadingPrice, setIsLoadingPrice] = useState<boolean>(false);
   const [isLoadingData, setIsLoadingData] = useState<boolean>(true);
   const [isSaving, setIsSaving] = useState<boolean>(false);
+  const [settingsModalOpened, setSettingsModalOpened] = useState<boolean>(false);
 
   // Load user data
   useEffect(() => {
@@ -198,9 +201,19 @@ export default function SavingsCalculatorWithData() {
         <PWAInstaller />
         
         {/* Header */}
-        <Title order={1} ta="center" c="teal">
-          さとし貯金ノート
-        </Title>
+        <Group justify="space-between" align="center">
+          <Title order={1} c="teal" style={{ flex: 1, textAlign: 'center' }}>
+            さとし貯金ノート
+          </Title>
+          <ActionIcon
+            variant="light"
+            color="teal"
+            size="lg"
+            onClick={() => setSettingsModalOpened(true)}
+          >
+            <IconSettings size={20} />
+          </ActionIcon>
+        </Group>
 
         {/* Main Progress Card */}
         <Card shadow="sm" padding="lg" radius="md" withBorder>
@@ -400,6 +413,27 @@ export default function SavingsCalculatorWithData() {
             </Group>
           </Stack>
         </Card>
+
+        {/* Goal Settings Modal */}
+        <GoalSettingsModal
+          opened={settingsModalOpened}
+          onClose={() => setSettingsModalOpened(false)}
+          currentGoal={goal}
+          userId={user?.uid || ''}
+          onGoalUpdated={(updatedGoal) => {
+            setGoal(updatedGoal);
+            // Reload data to reflect changes
+            const loadUserData = async () => {
+              const [entries, btcAmount] = await Promise.all([
+                getRecentProgressEntries(user?.uid || '', 5),
+                calculateCurrentBtc(user?.uid || ''),
+              ]);
+              setRecentEntries(entries);
+              setCurrentBtc(btcAmount);
+            };
+            loadUserData();
+          }}
+        />
       </Stack>
     </Container>
   );

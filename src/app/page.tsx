@@ -1,5 +1,10 @@
-import SavingsCalculator from '@/components/SavingsCalculator';
+import AuthWrapper from '@/components/AuthWrapper';
+import SavingsCalculatorWithData from '@/components/SavingsCalculatorWithData';
 
 export default function Home() {
-  return <SavingsCalculator />;
+  return (
+    <AuthWrapper>
+      <SavingsCalculatorWithData />
+    </AuthWrapper>
+  );
 }
