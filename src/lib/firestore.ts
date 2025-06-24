@@ -106,7 +106,7 @@ export async function saveUserGoal(uid: string, goal: Partial<UserGoal>): Promis
 /**
  * Progress Entry Operations
  */
-export async function addProgressEntry(uid: string, entry: Omit<ProgressEntry, 'createdAt'>): Promise<string> {
+export async function addProgressEntry(uid: string, entry: Omit<ProgressEntry, 'id' | 'createdAt'>): Promise<string> {
   try {
     const collectionRef = collection(db, 'progress', uid, 'entries');
     const docRef = await addDoc(collectionRef, {
