@@ -47,6 +47,13 @@ import {
   calculateCurrentBtc,
   initializeUserData,
 } from '@/lib/firestore';
+import {
+  saveGoalToLocalStorage,
+  getGoalFromLocalStorage,
+  saveProgressToLocalStorage,
+  getProgressFromLocalStorage,
+  calculateCurrentBtcFromLocalStorage,
+} from '@/lib/localStorage';
 import { UserProfile, UserGoal, ProgressEntry } from '@/types';
 
 export default function SavingsCalculatorWithData() {
@@ -63,67 +70,91 @@ export default function SavingsCalculatorWithData() {
   const [isLoadingData, setIsLoadingData] = useState<boolean>(true);
   const [isSaving, setIsSaving] = useState<boolean>(false);
   const [settingsModalOpened, setSettingsModalOpened] = useState<boolean>(false);
+  const [isDemoMode, setIsDemoMode] = useState<boolean>(false);
 
   // Load user data
   useEffect(() => {
     // Check for demo mode or auth errors
     if (loading) return;
     
-    if (!user && !authError) {
-      // Demo mode - use default data
-      setGoal({
-        targetBtc: 0.1,
-        deadline: new Date(Date.now() + 5 * 365 * 24 * 60 * 60 * 1000),
-        startBtc: 0,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      });
-      setIsLoadingData(false);
+    if (!user) {
+      // Demo mode - use localStorage
+      setIsDemoMode(true);
+      loadDemoModeData();
       return;
     }
 
-    if (!user) return;
+    loadFirebaseData();
+  }, [user, loading]);
 
-    const loadUserData = async () => {
-      try {
-        setIsLoadingData(true);
-
-        // Initialize user data if first time
-        await initializeUserData(user.uid, user.email || '');
-
-        // Load profile, goal, and progress
-        const [profileData, goalData, entries, btcAmount] = await Promise.all([
-          getUserProfile(user.uid),
-          getUserGoal(user.uid),
-          getRecentProgressEntries(user.uid, 5),
-          calculateCurrentBtc(user.uid),
-        ]);
-
-        setProfile(profileData);
-        setGoal(goalData);
-        setRecentEntries(entries);
-        setCurrentBtc(btcAmount);
-
-        // Auto-fetch current price
-        handlePriceUpdate();
-      } catch (error) {
-        console.error('Error loading user data:', error);
-        setAuthError(true);
-        // Fallback to demo mode
-        setGoal({
+  const loadDemoModeData = () => {
+    try {
+      setIsLoadingData(true);
+      
+      // Load goal from localStorage or create default
+      let loadedGoal = getGoalFromLocalStorage();
+      if (!loadedGoal) {
+        loadedGoal = {
           targetBtc: 0.1,
           deadline: new Date(Date.now() + 5 * 365 * 24 * 60 * 60 * 1000),
           startBtc: 0,
           createdAt: new Date(),
           updatedAt: new Date(),
-        });
-      } finally {
-        setIsLoadingData(false);
+        };
+        saveGoalToLocalStorage(loadedGoal);
       }
-    };
+      
+      // Load progress from localStorage
+      const loadedEntries = getProgressFromLocalStorage();
+      const loadedBtc = calculateCurrentBtcFromLocalStorage();
+      
+      setGoal(loadedGoal);
+      setRecentEntries(loadedEntries.slice(0, 5));
+      setCurrentBtc(loadedBtc);
+      
+      // Auto-fetch current price
+      handlePriceUpdate();
+    } catch (error) {
+      console.error('Error loading demo mode data:', error);
+    } finally {
+      setIsLoadingData(false);
+    }
+  };
 
-    loadUserData();
-  }, [user, loading, authError]);
+  const loadFirebaseData = async () => {
+    if (!user) return;
+
+    try {
+      setIsLoadingData(true);
+
+      // Initialize user data if first time
+      await initializeUserData(user.uid, user.email || '');
+
+      // Load profile, goal, and progress
+      const [profileData, goalData, entries, btcAmount] = await Promise.all([
+        getUserProfile(user.uid),
+        getUserGoal(user.uid),
+        getRecentProgressEntries(user.uid, 5),
+        calculateCurrentBtc(user.uid),
+      ]);
+
+      setProfile(profileData);
+      setGoal(goalData);
+      setRecentEntries(entries);
+      setCurrentBtc(btcAmount);
+
+      // Auto-fetch current price
+      handlePriceUpdate();
+    } catch (error) {
+      console.error('Error loading user data:', error);
+      setAuthError(true);
+      // Fallback to demo mode
+      setIsDemoMode(true);
+      loadDemoModeData();
+    } finally {
+      setIsLoadingData(false);
+    }
+  };
 
   const handlePriceUpdate = async () => {
     setIsLoadingPrice(true);
@@ -145,24 +176,44 @@ export default function SavingsCalculatorWithData() {
   };
 
   const handleDepositAdd = async () => {
-    if (!user || monthlyDeposit <= 0) return;
+    if (monthlyDeposit <= 0) return;
 
     setIsSaving(true);
     try {
-      // Add progress entry to Firestore
-      await addProgressEntry(user.uid, {
+      const btcPurchased = monthlyDeposit / currentPrice;
+      const newEntry: ProgressEntry = {
+        id: Date.now().toString(),
         btcPrice: currentPrice,
         depositJpy: monthlyDeposit,
         memo: memo,
-      });
+        createdAt: new Date(),
+      };
 
-      // Update local state
-      const btcPurchased = monthlyDeposit / currentPrice;
-      setCurrentBtc(prev => prev + btcPurchased);
+      if (isDemoMode) {
+        // Demo mode - save to localStorage
+        saveProgressToLocalStorage(newEntry);
+        
+        // Update local state
+        setCurrentBtc(prev => prev + btcPurchased);
+        
+        // Refresh recent entries from localStorage
+        const updatedEntries = getProgressFromLocalStorage();
+        setRecentEntries(updatedEntries.slice(0, 5));
+      } else if (user) {
+        // Firebase mode
+        await addProgressEntry(user.uid, {
+          btcPrice: currentPrice,
+          depositJpy: monthlyDeposit,
+          memo: memo,
+        });
 
-      // Refresh recent entries
-      const updatedEntries = await getRecentProgressEntries(user.uid, 5);
-      setRecentEntries(updatedEntries);
+        // Update local state
+        setCurrentBtc(prev => prev + btcPurchased);
+
+        // Refresh recent entries
+        const updatedEntries = await getRecentProgressEntries(user.uid, 5);
+        setRecentEntries(updatedEntries);
+      }
 
       // Reset form
       setMonthlyDeposit(0);
@@ -441,18 +492,29 @@ export default function SavingsCalculatorWithData() {
           onClose={() => setSettingsModalOpened(false)}
           currentGoal={goal}
           userId={user?.uid || ''}
+          isDemoMode={isDemoMode}
           onGoalUpdated={(updatedGoal) => {
             setGoal(updatedGoal);
-            // Reload data to reflect changes
-            const loadUserData = async () => {
-              const [entries, btcAmount] = await Promise.all([
-                getRecentProgressEntries(user?.uid || '', 5),
-                calculateCurrentBtc(user?.uid || ''),
-              ]);
-              setRecentEntries(entries);
+            
+            if (isDemoMode) {
+              // Demo mode - save to localStorage and reload from localStorage
+              saveGoalToLocalStorage(updatedGoal);
+              const entries = getProgressFromLocalStorage();
+              const btcAmount = calculateCurrentBtcFromLocalStorage();
+              setRecentEntries(entries.slice(0, 5));
               setCurrentBtc(btcAmount);
-            };
-            loadUserData();
+            } else {
+              // Firebase mode - reload from Firebase
+              const loadUserData = async () => {
+                const [entries, btcAmount] = await Promise.all([
+                  getRecentProgressEntries(user?.uid || '', 5),
+                  calculateCurrentBtc(user?.uid || ''),
+                ]);
+                setRecentEntries(entries);
+                setCurrentBtc(btcAmount);
+              };
+              loadUserData();
+            }
           }}
         />
       </Stack>

@@ -16,12 +16,14 @@ import { IconTarget, IconCalendar, IconCoin } from '@tabler/icons-react';
 import { notifications } from '@mantine/notifications';
 import { UserGoal } from '@/types';
 import { saveUserGoal } from '@/lib/firestore';
+import { saveGoalToLocalStorage } from '@/lib/localStorage';
 
 interface GoalSettingsModalProps {
   opened: boolean;
   onClose: () => void;
   currentGoal: UserGoal | null;
   userId: string;
+  isDemoMode?: boolean;
   onGoalUpdated: (goal: UserGoal) => void;
 }
 
@@ -30,6 +32,7 @@ export default function GoalSettingsModal({
   onClose,
   currentGoal,
   userId,
+  isDemoMode = false,
   onGoalUpdated,
 }: GoalSettingsModalProps) {
   const [targetBtc, setTargetBtc] = useState(currentGoal?.targetBtc || 0.1);
@@ -63,19 +66,26 @@ export default function GoalSettingsModal({
 
     setIsSaving(true);
     try {
-      const goalData: Partial<UserGoal> = {
+      const updatedGoal: UserGoal = {
         targetBtc,
         deadline,
         startBtc,
-      };
-
-      await saveUserGoal(userId, goalData);
-
-      const updatedGoal: UserGoal = {
-        ...goalData,
         createdAt: currentGoal?.createdAt || new Date(),
         updatedAt: new Date(),
-      } as UserGoal;
+      };
+
+      if (isDemoMode) {
+        // Demo mode - save to localStorage
+        saveGoalToLocalStorage(updatedGoal);
+      } else {
+        // Firebase mode - save to Firestore
+        const goalData: Partial<UserGoal> = {
+          targetBtc,
+          deadline,
+          startBtc,
+        };
+        await saveUserGoal(userId, goalData);
+      }
 
       onGoalUpdated(updatedGoal);
       onClose();
