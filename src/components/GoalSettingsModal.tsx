@@ -36,6 +36,9 @@ export default function GoalSettingsModal({
   const [deadline, setDeadline] = useState<Date | null>(
     currentGoal?.deadline || new Date(Date.now() + 5 * 365 * 24 * 60 * 60 * 1000)
   );
+  const [deadlineString, setDeadlineString] = useState<string>(
+    deadline?.toISOString().split('T')[0] || ''
+  );
   const [startBtc, setStartBtc] = useState(currentGoal?.startBtc || 0);
   const [isSaving, setIsSaving] = useState(false);
 
@@ -127,10 +130,13 @@ export default function GoalSettingsModal({
         <DateInput
           label="達成期限"
           description="目標を達成したい日付を選択してください"
-          value={deadline}
-          onChange={setDeadline}
+          value={deadlineString}
+          onChange={(value: string | null) => {
+            setDeadlineString(value || '');
+            setDeadline(value ? new Date(value) : null);
+          }}
           leftSection={<IconCalendar size={16} />}
-          minDate={new Date()}
+          minDate={new Date().toISOString().split('T')[0]}
         />
 
         <NumberInput

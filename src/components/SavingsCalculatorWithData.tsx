@@ -51,6 +51,7 @@ import { UserProfile, UserGoal, ProgressEntry } from '@/types';
 
 export default function SavingsCalculatorWithData() {
   const [user, loading] = useAuthState(auth);
+  const [authError, setAuthError] = useState<boolean>(false);
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [goal, setGoal] = useState<UserGoal | null>(null);
   const [currentBtc, setCurrentBtc] = useState<number>(0);
@@ -65,6 +66,22 @@ export default function SavingsCalculatorWithData() {
 
   // Load user data
   useEffect(() => {
+    // Check for demo mode or auth errors
+    if (loading) return;
+    
+    if (!user && !authError) {
+      // Demo mode - use default data
+      setGoal({
+        targetBtc: 0.1,
+        deadline: new Date(Date.now() + 5 * 365 * 24 * 60 * 60 * 1000),
+        startBtc: 0,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      });
+      setIsLoadingData(false);
+      return;
+    }
+
     if (!user) return;
 
     const loadUserData = async () => {
@@ -91,10 +108,14 @@ export default function SavingsCalculatorWithData() {
         handlePriceUpdate();
       } catch (error) {
         console.error('Error loading user data:', error);
-        notifications.show({
-          title: 'エラー',
-          message: 'データの読み込みに失敗しました',
-          color: 'red',
+        setAuthError(true);
+        // Fallback to demo mode
+        setGoal({
+          targetBtc: 0.1,
+          deadline: new Date(Date.now() + 5 * 365 * 24 * 60 * 60 * 1000),
+          startBtc: 0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
         });
       } finally {
         setIsLoadingData(false);
@@ -102,7 +123,7 @@ export default function SavingsCalculatorWithData() {
     };
 
     loadUserData();
-  }, [user]);
+  }, [user, loading, authError]);
 
   const handlePriceUpdate = async () => {
     setIsLoadingPrice(true);
