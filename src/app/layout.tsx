@@ -1,5 +1,9 @@
 import type { Metadata } from 'next'
+import { MantineProvider } from '@mantine/core'
+import { Notifications } from '@mantine/notifications'
 import './globals.css'
+import '@mantine/core/styles.css'
+import '@mantine/notifications/styles.css'
 
 export const metadata: Metadata = {
   title: 'さとし貯金ノート',
@@ -13,7 +17,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body>{children}</body>
+      <body>
+        <MantineProvider>
+          <Notifications />
+          {children}
+        </MantineProvider>
+      </body>
     </html>
   )
 }
