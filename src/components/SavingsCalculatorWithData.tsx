@@ -23,7 +23,6 @@ import {
   List,
   ActionIcon,
   Tooltip,
-  Flex,
 } from '@mantine/core';
 import { IconCoin, IconTarget, IconCalendar, IconPlus, IconSettings, IconTrendingUp, IconRefresh } from '@tabler/icons-react';
 import { notifications } from '@mantine/notifications';
