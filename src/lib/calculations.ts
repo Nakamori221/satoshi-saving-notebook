@@ -149,3 +149,87 @@ export function formatBtc(btc: number, precision: number = 8): string {
 export function formatSats(sats: number): string {
   return new Intl.NumberFormat('ja-JP').format(sats);
 }
+
+/**
+ * Calculate previous month required amount for comparison
+ * @param priceJpy Current BTC price in JPY
+ * @param targetBtc Target BTC amount
+ * @param currentBtc Current BTC amount
+ * @param monthsLeft Current months remaining
+ * @param priceChangePercent Price change from previous period (e.g., -5 for 5% decrease)
+ * @returns Previous month required amount and change info
+ */
+export function getPreviousMonthComparison(
+  priceJpy: number,
+  targetBtc: number,
+  currentBtc: number,
+  monthsLeft: number,
+  priceChangePercent: number = 0
+): {
+  previousRequired: number;
+  currentRequired: number;
+  changePercent: number;
+  changeAmount: number;
+  isDecrease: boolean;
+} {
+  const currentRequired = getRequiredMonthlyAmount(priceJpy, targetBtc, currentBtc, monthsLeft);
+  const previousPrice = Math.round(priceJpy / (1 + priceChangePercent / 100));
+  const previousRequired = getRequiredMonthlyAmount(previousPrice, targetBtc, currentBtc, monthsLeft + 1);
+  
+  const changeAmount = currentRequired - previousRequired;
+  const changePercent = previousRequired > 0 ? (changeAmount / previousRequired) * 100 : 0;
+  
+  return {
+    previousRequired,
+    currentRequired,
+    changePercent,
+    changeAmount,
+    isDecrease: changeAmount < 0,
+  };
+}
+
+/**
+ * Get price change badge color
+ * @param changePercent Change percentage
+ * @returns Mantine color string
+ */
+export function getPriceChangeBadgeColor(changePercent: number): string {
+  if (changePercent > 5) return 'red';
+  if (changePercent > 0) return 'orange';
+  if (changePercent < -5) return 'green';
+  if (changePercent < 0) return 'teal';
+  return 'gray';
+}
+
+/**
+ * Format time remaining with better granularity
+ * @param months Total months remaining
+ * @returns Formatted time string
+ */
+export function formatTimeRemaining(months: number): {
+  years: number;
+  monthsRemainder: number;
+  displayText: string;
+  urgencyLevel: 'high' | 'medium' | 'low';
+} {
+  const years = Math.floor(months / 12);
+  const monthsRemainder = Math.floor(months % 12);
+  
+  let displayText = '';
+  if (years > 0) {
+    displayText = `${years}年${monthsRemainder}ヶ月`;
+  } else {
+    displayText = `${monthsRemainder}ヶ月`;
+  }
+  
+  let urgencyLevel: 'high' | 'medium' | 'low' = 'low';
+  if (months < 6) urgencyLevel = 'high';
+  else if (months < 24) urgencyLevel = 'medium';
+  
+  return {
+    years,
+    monthsRemainder,
+    displayText,
+    urgencyLevel,
+  };
+}

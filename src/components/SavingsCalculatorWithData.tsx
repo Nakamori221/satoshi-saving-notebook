@@ -22,8 +22,10 @@ import {
   Alert,
   List,
   ActionIcon,
+  Tooltip,
+  Flex,
 } from '@mantine/core';
-import { IconCoin, IconTarget, IconCalendar, IconPlus, IconSettings } from '@tabler/icons-react';
+import { IconCoin, IconTarget, IconCalendar, IconPlus, IconSettings, IconTrendingUp, IconRefresh } from '@tabler/icons-react';
 import { notifications } from '@mantine/notifications';
 import PWAInstaller from '@/components/PWAInstaller';
 import GoalSettingsModal from '@/components/GoalSettingsModal';
@@ -38,6 +40,9 @@ import {
   formatCurrency,
   formatBtc,
   formatSats,
+  getPreviousMonthComparison,
+  getPriceChangeBadgeColor,
+  formatTimeRemaining,
 } from '@/lib/calculations';
 import {
   getUserProfile,
@@ -71,6 +76,8 @@ export default function SavingsCalculatorWithData() {
   const [isSaving, setIsSaving] = useState<boolean>(false);
   const [settingsModalOpened, setSettingsModalOpened] = useState<boolean>(false);
   const [isDemoMode, setIsDemoMode] = useState<boolean>(false);
+  const [priceChangePercent, setPriceChangePercent] = useState<number>(-2.5); // Simulated price change for demo
+  const [lastPriceUpdate, setLastPriceUpdate] = useState<Date>(new Date());
 
   // Load user data
   useEffect(() => {
@@ -164,6 +171,7 @@ export default function SavingsCalculatorWithData() {
       
       if (data.success) {
         setCurrentPrice(data.price);
+        setLastPriceUpdate(new Date());
         console.log('✅ Price updated:', data.price);
       } else {
         console.error('❌ Price update failed:', data.error);
@@ -265,6 +273,9 @@ export default function SavingsCalculatorWithData() {
   const remainingSats = getRemainingSats(goal.targetBtc, currentBtc);
   const estimatedCompletion = getEstimatedCompletionDate(currentBtc, goal.targetBtc, monthlyDeposit, currentPrice);
   const badgeColor = getBadgeColor(achievementRate);
+  const timeRemaining = formatTimeRemaining(monthsLeft);
+  const monthComparison = getPreviousMonthComparison(currentPrice, goal.targetBtc, currentBtc, monthsLeft, priceChangePercent);
+  const priceChangeBadgeColor = getPriceChangeBadgeColor(monthComparison.changePercent);
 
   return (
     <Container size="md" py="xl">
@@ -311,50 +322,104 @@ export default function SavingsCalculatorWithData() {
               />
             </Group>
 
-            {/* Key Metrics */}
+            {/* Enhanced Three-Layer Metrics Dashboard */}
             <Grid>
-              <Grid.Col span={6}>
+              {/* Current Holdings - Three Layer Display */}
+              <Grid.Col span={12}>
+                <Card padding="md" radius="sm" withBorder style={{ background: 'linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%)' }}>
+                  <Stack gap="xs">
+                    <Text size="sm" c="dimmed" fw={500}>現在の積立額</Text>
+                    <Group justify="space-between" align="center">
+                      <div>
+                        <Text size="xl" fw={900} c="teal">
+                          {formatCurrency(currentBtc * currentPrice)}
+                        </Text>
+                        <Text size="sm" c="dimmed">評価額 (JPY)</Text>
+                      </div>
+                      <div style={{ textAlign: 'center' }}>
+                        <Text size="lg" fw={700}>
+                          {formatBtc(currentBtc, 6)} BTC
+                        </Text>
+                        <Text size="xs" c="dimmed">ビットコイン</Text>
+                      </div>
+                      <div style={{ textAlign: 'right' }}>
+                        <Text size="md" fw={600} c="orange">
+                          {formatSats(Math.round(currentBtc * 100_000_000))} sat
+                        </Text>
+                        <Text size="xs" c="dimmed">サトシ</Text>
+                      </div>
+                    </Group>
+                  </Stack>
+                </Card>
+              </Grid.Col>
+
+              {/* Remaining Target */}
+              <Grid.Col span={4}>
                 <Card padding="sm" radius="sm" withBorder>
                   <Group gap="xs">
-                    <IconTarget size={20} color="orange" />
+                    <IconTarget size={18} color="orange" />
                     <div>
-                      <Text size="xs" c="dimmed">残り</Text>
-                      <Text size="lg" fw={700}>
+                      <Text size="xs" c="dimmed">残り目標</Text>
+                      <Text size="md" fw={700}>
                         {formatSats(remainingSats)} sat
+                      </Text>
+                      <Text size="xs" c="dimmed">
+                        {formatBtc(goal.targetBtc - currentBtc, 6)} BTC
                       </Text>
                     </div>
                   </Group>
                 </Card>
               </Grid.Col>
 
-              <Grid.Col span={6}>
+              {/* Required Monthly Amount with Comparison */}
+              <Grid.Col span={4}>
                 <Card padding="sm" radius="sm" withBorder>
                   <Group gap="xs">
-                    <IconCoin size={20} color="green" />
+                    <IconCoin size={18} color="green" />
                     <div>
-                      <Text size="xs" c="dimmed">必要月額</Text>
-                      <Text size="lg" fw={700}>
+                      <Group gap="xs" align="center">
+                        <Text size="xs" c="dimmed">必要月額</Text>
+                        {Math.abs(monthComparison.changePercent) > 1 && (
+                          <Badge 
+                            color={priceChangeBadgeColor} 
+                            size="xs" 
+                            variant="light"
+                          >
+                            {monthComparison.isDecrease ? '↓' : '↑'}
+                            {Math.abs(monthComparison.changePercent).toFixed(1)}%
+                          </Badge>
+                        )}
+                      </Group>
+                      <Text size="md" fw={700}>
                         {formatCurrency(requiredMonthlyAmount)}
                       </Text>
                       <Badge color={badgeColor} size="xs">
-                        週額: {formatCurrency(requiredWeeklyAmount)}
+                        週: {formatCurrency(requiredWeeklyAmount)}
                       </Badge>
                     </div>
                   </Group>
                 </Card>
               </Grid.Col>
 
-              <Grid.Col span={12}>
+              {/* Enhanced Remaining Time */}
+              <Grid.Col span={4}>
                 <Card padding="sm" radius="sm" withBorder>
                   <Group gap="xs">
-                    <IconCalendar size={20} color="blue" />
+                    <IconCalendar size={18} color={timeRemaining.urgencyLevel === 'high' ? 'red' : timeRemaining.urgencyLevel === 'medium' ? 'orange' : 'blue'} />
                     <div>
-                      <Text size="xs" c="dimmed">達成予定</Text>
-                      <Text size="lg" fw={700}>
-                        {estimatedCompletion.toLocaleDateString('ja-JP', {
-                          year: 'numeric',
-                          month: '2-digit'
-                        })}
+                      <Group gap="xs" align="center">
+                        <Text size="xs" c="dimmed">残期間</Text>
+                        {timeRemaining.urgencyLevel === 'high' && (
+                          <Badge color="red" size="xs" variant="light">
+                            緊急
+                          </Badge>
+                        )}
+                      </Group>
+                      <Text size="md" fw={700} c={timeRemaining.urgencyLevel === 'high' ? 'red' : undefined}>
+                        {timeRemaining.displayText}
+                      </Text>
+                      <Text size="xs" c="dimmed">
+                        {goal.deadline.toLocaleDateString('ja-JP', { month: '2-digit', day: '2-digit' })}まで
                       </Text>
                     </div>
                   </Group>
@@ -364,28 +429,44 @@ export default function SavingsCalculatorWithData() {
           </Stack>
         </Card>
 
-        {/* Input Card */}
+        {/* Enhanced Input Card */}
         <Card shadow="sm" padding="lg" radius="md" withBorder>
           <Stack gap="md">
-            <Title order={3}>積立記録追加</Title>
+            <Group justify="space-between" align="center">
+              <Title order={3}>積立記録追加</Title>
+              <Badge variant="light" color="gray" size="sm">
+                前回更新: {lastPriceUpdate.toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}
+              </Badge>
+            </Group>
             
             <Grid>
               <Grid.Col span={6}>
                 <NumberInput
-                  label="BTC価格 (JPY)"
+                  label={
+                    <Group gap="xs">
+                      <Text size="sm">BTC価格 (JPY)</Text>
+                      <Tooltip label="コインゲッコー API経由で取得">
+                        <Badge variant="outline" size="xs" color="blue">
+                          CoinGecko
+                        </Badge>
+                      </Tooltip>
+                    </Group>
+                  }
                   value={currentPrice}
                   onChange={(value) => setCurrentPrice(Number(value) || 0)}
                   thousandSeparator=","
                   hideControls
                   rightSection={
-                    <Button 
-                      size="xs" 
-                      variant="light" 
-                      onClick={handlePriceUpdate}
-                      loading={isLoadingPrice}
-                    >
-                      更新
-                    </Button>
+                    <Tooltip label="最新価格を取得">
+                      <ActionIcon 
+                        variant="light" 
+                        onClick={handlePriceUpdate}
+                        loading={isLoadingPrice}
+                        color="blue"
+                      >
+                        <IconRefresh size={16} />
+                      </ActionIcon>
+                    </Tooltip>
                   }
                 />
               </Grid.Col>
@@ -398,6 +479,22 @@ export default function SavingsCalculatorWithData() {
                   thousandSeparator=","
                   hideControls
                 />
+                
+                {/* Quick Amount Buttons */}
+                <Group gap="xs" mt="xs">
+                  <Text size="xs" c="dimmed">クイック入力:</Text>
+                  {[10000, 30000, 50000, 100000].map((amount) => (
+                    <Button
+                      key={amount}
+                      size="xs"
+                      variant="light"
+                      color="teal"
+                      onClick={() => setMonthlyDeposit(prev => prev + amount)}
+                    >
+                      +{(amount / 10000).toFixed(0)}万
+                    </Button>
+                  ))}
+                </Group>
               </Grid.Col>
 
               <Grid.Col span={12}>
@@ -411,16 +508,30 @@ export default function SavingsCalculatorWithData() {
               </Grid.Col>
 
               <Grid.Col span={12}>
-                <Button
-                  fullWidth
-                  onClick={handleDepositAdd}
-                  disabled={monthlyDeposit <= 0}
-                  loading={isSaving}
-                  color="teal"
-                  leftSection={<IconPlus size={16} />}
-                >
-                  積立記録を保存
-                </Button>
+                <Group grow>
+                  <Button
+                    onClick={handleDepositAdd}
+                    disabled={monthlyDeposit <= 0}
+                    loading={isSaving}
+                    color="teal"
+                    leftSection={<IconPlus size={16} />}
+                  >
+                    積立記録を保存
+                  </Button>
+                  
+                  {monthComparison.isDecrease && (
+                    <Tooltip label="価格下落時の追加買いチャンス！">
+                      <Button
+                        onClick={() => setMonthlyDeposit(prev => prev + Math.round(requiredMonthlyAmount * 0.5))}
+                        variant="light"
+                        color="green"
+                        leftSection={<IconTrendingUp size={16} />}
+                      >
+                        追加買い
+                      </Button>
+                    </Tooltip>
+                  )}
+                </Group>
               </Grid.Col>
             </Grid>
           </Stack>
@@ -460,28 +571,64 @@ export default function SavingsCalculatorWithData() {
           </Card>
         )}
 
-        {/* Goal Summary */}
-        <Card shadow="sm" padding="lg" radius="md" withBorder>
+        {/* Action Insights & Recommendations */}
+        <Card shadow="sm" padding="lg" radius="md" withBorder style={{ background: 'linear-gradient(135deg, #fff3e0 0%, #e8f5e8 100%)' }}>
           <Stack gap="sm">
-            <Title order={4}>目標サマリー</Title>
+            <Group gap="xs">
+              <IconTrendingUp size={20} color="green" />
+              <Title order={4}>アクション提案</Title>
+            </Group>
             <Divider />
-            <Group justify="space-between">
-              <Text size="sm">目標BTC:</Text>
-              <Text size="sm" fw={500}>{formatBtc(goal.targetBtc)} BTC</Text>
-            </Group>
-            <Group justify="space-between">
-              <Text size="sm">現在BTC:</Text>
-              <Text size="sm" fw={500}>{formatBtc(currentBtc)} BTC</Text>
-            </Group>
-            <Group justify="space-between">
-              <Text size="sm">期限:</Text>
-              <Text size="sm" fw={500}>
-                {goal.deadline.toLocaleDateString('ja-JP')}
-              </Text>
-            </Group>
-            <Group justify="space-between">
-              <Text size="sm">残り期間:</Text>
-              <Text size="sm" fw={500}>{monthsLeft.toFixed(1)}ヶ月</Text>
+            
+            {/* Smart Recommendations */}
+            {achievementRate < 50 && timeRemaining.urgencyLevel === 'high' && (
+              <Alert color="orange" variant="light">
+                <Text size="sm" fw={500}>
+                  🔥 達成まで残りわずか！月額を{formatCurrency(requiredMonthlyAmount - (monthlyDeposit || 0))}増額して目標達成を目指しましょう。
+                </Text>
+              </Alert>
+            )}
+            
+            {monthComparison.isDecrease && Math.abs(monthComparison.changePercent) > 3 && (
+              <Alert color="green" variant="light">
+                <Text size="sm" fw={500}>
+                  📉 BTC価格下落で必要月額が{Math.abs(monthComparison.changePercent).toFixed(1)}%減少！今が買い増しのチャンスです。
+                </Text>
+              </Alert>
+            )}
+            
+            {!monthComparison.isDecrease && monthComparison.changePercent > 5 && (
+              <Alert color="blue" variant="light">
+                <Text size="sm" fw={500}>
+                  📈 価格上昇中ですが、焦らず定額積立を継続することがDCA成功の鍵です。
+                </Text>
+              </Alert>
+            )}
+            
+            {achievementRate > 80 && (
+              <Alert color="teal" variant="light">
+                <Text size="sm" fw={500}>
+                  🎉 達成率{achievementRate.toFixed(1)}%！あと少しで目標達成です。継続して頑張りましょう！
+                </Text>
+              </Alert>
+            )}
+            
+            {/* Quick Stats */}
+            <Group grow>
+              <div>
+                <Text size="xs" c="dimmed">目標BTC</Text>
+                <Text size="sm" fw={500}>{formatBtc(goal.targetBtc)} BTC</Text>
+              </div>
+              <div>
+                <Text size="xs" c="dimmed">現在BTC</Text>
+                <Text size="sm" fw={500}>{formatBtc(currentBtc)} BTC</Text>
+              </div>
+              <div>
+                <Text size="xs" c="dimmed">期限</Text>
+                <Text size="sm" fw={500}>
+                  {goal.deadline.toLocaleDateString('ja-JP', { month: '2-digit', day: '2-digit' })}
+                </Text>
+              </div>
             </Group>
           </Stack>
         </Card>
