@@ -1,0 +1,92 @@
+{
+  "Crypto Fundamental Research": {
+    "prefix": "rf",
+    "body": [
+      "/research --crypto --fundamental",
+      "$1 について、$2の期間内でファンダメンタル分析をしてください"
+    ],
+    "description": "暗号資産ファンダメンタル分析"
+  },
+  "News Screening": {
+    "prefix": "rs",
+    "body": [
+      "/research --news --screening",
+      "以下のニュースから深掘り候補を選定してください：",
+      "$1"
+    ],
+    "description": "ニュース深掘りスクリーニング"
+  },
+  "Market Analysis": {
+    "prefix": "ma",
+    "body": [
+      "/analyze --market --sentiment",
+      "$1について、オンチェーンデータ、取引所動向、ソーシャルメトリクスを総合的に分析してください"
+    ],
+    "description": "マーケット分析・センチメント調査"
+  },
+  "Deep Dive Investigation": {
+    "prefix": "dd",
+    "body": [
+      "/investigate --deep-dive --topic",
+      "$1について包括的な調査を実施してください"
+    ],
+    "description": "特定トピック深掘り調査"
+  },
+  "Beginner Blog": {
+    "prefix": "wb",
+    "body": [
+      "/write --blog --beginner",
+      "「$1」について、初心者向けの分かりやすいブログ記事を作成してください"
+    ],
+    "description": "初心者向けブログ記事作成"
+  },
+  "Technical Writing": {
+    "prefix": "wt",
+    "body": [
+      "/write --technical --explanation",
+      "$1について、技術的背景から実用性まで段階的に解説する記事を作成してください"
+    ],
+    "description": "技術解説記事作成"
+  },
+  "SNS Multi": {
+    "prefix": "ws",
+    "body": [
+      "/write --sns --multi",
+      "$1をベースに、Twitter用とInstagram用の投稿文を作成してください"
+    ],
+    "description": "SNS配信文作成"
+  },
+  "Blog to Thread": {
+    "prefix": "bt",
+    "body": [
+      "/convert --blog-to-thread",
+      "「$1」を、$2投稿のTwitterスレッドに分割してください"
+    ],
+    "description": "ブログ→Twitter変換"
+  },
+  "Portfolio Review": {
+    "prefix": "pr",
+    "body": [
+      "/analyze --portfolio --review",
+      "以下のポートフォリオを分析してください：",
+      "$1"
+    ],
+    "description": "ポートフォリオ分析"
+  },
+  "Metrics Monitoring": {
+    "prefix": "mm",
+    "body": [
+      "/monitor --metrics --dashboard",
+      "$1において、定点観測すべき重要指標とアラート設定を提案してください"
+    ],
+    "description": "指標モニタリング"
+  },
+  "Risk Assessment": {
+    "prefix": "ra",
+    "body": [
+      "/evaluate --risk --assessment",
+      "$1について、投資リスクを評価してください"
+    ],
+    "description": "リスク評価"
+  }
+} 

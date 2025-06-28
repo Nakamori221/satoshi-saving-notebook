@@ -1,10 +1,10 @@
 {
   "shouldConfirmBeforeCreate": true,
-  "weekStart": "saturday",
+  "weekStart": "locale",
   "wordsPerDot": 250,
-  "showWeeklyNote": true,
-  "weeklyNoteFormat": "YY[年]-mm[月]-ww[週目]",
-  "weeklyNoteTemplate": "template/weekly template",
-  "weeklyNoteFolder": "00_Daily",
+  "showWeeklyNote": false,
+  "weeklyNoteFormat": "",
+  "weeklyNoteTemplate": "",
+  "weeklyNoteFolder": "",
   "localeOverride": "system-default"
 }

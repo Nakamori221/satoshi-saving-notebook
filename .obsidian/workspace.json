@@ -1,38 +1,197 @@
 {
   "main": {
-    "id": "cf94d2f7a6f1e7eb",
+    "id": "4cd88d8c096279a8",
     "type": "split",
     "children": [
       {
-        "id": "b262d864bf68b867",
+        "id": "c4770a36f5993390",
         "type": "tabs",
         "children": [
           {
-            "id": "0576b489e6b16eb1",
+            "id": "6fdb160ca223b4a9",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "40_Resources/References/06_June/2025年6月27日 バディさん.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新規タブ"
+              "title": "2025年6月27日 バディさん"
+            }
+          },
+          {
+            "id": "54b751f9214950c1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "マクロ視点のマーケット考察（0625投稿）.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "マクロ視点のマーケット考察（0625投稿）"
+            }
+          },
+          {
+            "id": "5c1c0d0df4a355ef",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Clippings/White House, lawmakers target September to move sweeping crypto legislation.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "White House, lawmakers target September to move sweeping crypto legislation"
+            }
+          },
+          {
+            "id": "ef13b49f71e4117d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2025年6月 ポートフォリオ 01.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2025年6月 ポートフォリオ 01"
+            }
+          },
+          {
+            "id": "32f15fb5f03a2039",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2025年6月 ポートフォリオ 02.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2025年6月 ポートフォリオ 02"
+            }
+          },
+          {
+            "id": "d4cdeb0c9d902f56",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2025年6月 ポートフォリオ 03.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2025年6月 ポートフォリオ 03"
+            }
+          },
+          {
+            "id": "a06c32999519c584",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2025年6月 ポートフォリオ 総合要約.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2025年6月 ポートフォリオ 総合要約"
+            }
+          },
+          {
+            "id": "5acb18b7ee3a3d17",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "TSUDOIでの暗号資産ファンダメンタル分析プロンプト・テンプレート.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "TSUDOIでの暗号資産ファンダメンタル分析プロンプト・テンプレート"
+            }
+          },
+          {
+            "id": "abb06a78fa0c734e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "50_Knowledge_Base/Cursor_Tips/Claude Code 版 Orchestaror で複雑なタスクをステップ実行する.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Claude Code 版 Orchestaror で複雑なタスクをステップ実行する"
+            }
+          },
+          {
+            "id": "cc60e67897c97ca3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "50_Knowledge_Base/Cursor_Tips/GitHubの承認プロセスの自動化.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "GitHubの承認プロセスの自動化"
+            }
+          },
+          {
+            "id": "96e87ccb6e354cf9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Clippings/Key U.S. Senator Tells White House Crypto Market Structure Bill Will Be Done by Sept. 30 1.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Key U.S. Senator Tells White House Crypto Market Structure Bill Will Be Done by Sept. 30 1"
+            }
+          },
+          {
+            "id": "17dde2ec823553ac",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "30_Content_Creation/Blog_Posts/Published/予測市場Polymarket_なぜTIME100に選ばれたのか_20250128.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "予測市場Polymarket_なぜTIME100に選ばれたのか_20250128"
             }
           }
-        ]
+        ],
+        "currentTab": 11
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "56925ecc50c049c7",
+    "id": "3b3e026e4064984b",
     "type": "split",
     "children": [
       {
-        "id": "1ed02d6c33e962ff",
+        "id": "c844d3766f061d77",
         "type": "tabs",
-        "dimension": 79.77755308392315,
+        "dimension": 79.27199191102123,
         "children": [
           {
-            "id": "578e263f04a0a7a7",
+            "id": "1ce7f613e678c37d",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -45,12 +204,12 @@
             }
           },
           {
-            "id": "c4e478bff26cfd10",
+            "id": "f1f58e8c3ad313c3",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#米国規制",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -62,7 +221,7 @@
             }
           },
           {
-            "id": "d2aa4334a4894c32",
+            "id": "c9acfde1599a9460",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -74,12 +233,12 @@
         ]
       },
       {
-        "id": "9737899f785f55c8",
+        "id": "6a10e5100ee03377",
         "type": "tabs",
-        "dimension": 20.222446916076844,
+        "dimension": 20.72800808897877,
         "children": [
           {
-            "id": "d07d5908e6fb6f2b",
+            "id": "77dddbab2d6cf6e4",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -92,19 +251,19 @@
       }
     ],
     "direction": "horizontal",
-    "width": 406.5
+    "width": 300
   },
   "right": {
-    "id": "d0378013f13c7bc6",
+    "id": "f66069efb1066384",
     "type": "split",
     "children": [
       {
-        "id": "4bee4177e2583500",
+        "id": "3ca655f6ea699a7d",
         "type": "tabs",
-        "dimension": 60.562015503875976,
+        "dimension": 65.60077519379846,
         "children": [
           {
-            "id": "5a32518f09dcabae",
+            "id": "10be0b40bdca8211",
             "type": "leaf",
             "state": {
               "type": "backlink",
@@ -122,21 +281,20 @@
             }
           },
           {
-            "id": "d78cd363a0c9d195",
+            "id": "066d1761df91cb6e",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "クリプト/GENIUS法案が既存暗号資産にもたらす“相乗効果”の整理.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "GENIUS法案が既存暗号資産にもたらす“相乗効果”の整理からのアウトゴーイングリンク"
+              "title": "アウトゴーイングリンク"
             }
           },
           {
-            "id": "28fc50556a95278d",
+            "id": "28c5a4a908a5c99b",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -151,44 +309,29 @@
             }
           },
           {
-            "id": "961f404b3cb85d71",
+            "id": "29baf401613a8e90",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "風が吹けば桶屋が儲かるサービス/動的相関図構築に学ぶ他業界の事例.md",
-                "followCursor": true,
+                "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "動的相関図構築に学ぶ他業界の事例のアウトライン"
-            }
-          },
-          {
-            "id": "3c7b03bbbfbcc257",
-            "type": "leaf",
-            "state": {
-              "type": "all-properties",
-              "state": {
-                "sortOrder": "frequency",
-                "showSearch": false,
-                "searchQuery": ""
-              },
-              "icon": "lucide-archive",
-              "title": "すべてのプロパティ"
+              "title": "アウトライン"
             }
           }
         ],
         "currentTab": 2
       },
       {
-        "id": "d0c060c4ef15cf46",
+        "id": "e8c45ea2f2855fea",
         "type": "tabs",
-        "dimension": 39.43798449612403,
+        "dimension": 34.39922480620155,
         "children": [
           {
-            "id": "619cd876730715e1",
+            "id": "515961ebce9c9bcd",
             "type": "leaf",
             "state": {
               "type": "calendar",
@@ -201,69 +344,59 @@
       }
     ],
     "direction": "horizontal",
-    "width": 357.5
+    "width": 315.5
   },
   "left-ribbon": {
     "hiddenItems": {
       "switcher:クイックスイッチャーを開く": false,
       "graph:グラフビューを開く": false,
       "canvas:新規キャンバスを作成": false,
+      "daily-notes:今日のデイリーノートを開く": false,
       "templates:テンプレートを挿入": false,
       "command-palette:コマンドパレットを開く": false,
-      "audio-recorder:録音の開始/停止": false,
-      "daily-notes:今日のデイリーノートを開く": false,
       "omnisearch:Omnisearch": false,
       "templater-obsidian:Templater": false
     }
   },
-  "active": "0576b489e6b16eb1",
+  "active": "17dde2ec823553ac",
   "lastOpenFiles": [
-    "satoshi-saving-notebook/satoshi-saving-notebook/postcss.config.js",
-    "satoshi-saving-notebook/satoshi-saving-notebook/tailwind.config.js",
-    "satoshi-saving-notebook/satoshi-saving-notebook/next.config.js",
-    "Clippings/NetXD Unveils End-to-End TradFi-DeFi Infrastructure Platform.md",
-    "50_Knowledge_Base/Business_Tips/ビジネスアイディアアプローチ方法.md",
-    "satoshi-saving-notebook/satoshi-saving-notebook/vercel.json",
-    "Clippings/Uniswap, Morpho and others collaborate on Web3SOC, a framework for determining a DeFi project's 'readiness for institutional partnerships'.md",
-    "Clippings/Texas Governor Greg Abbott signs strategic Bitcoin reserve bill into law.md",
-    "「Pump.fun系ミームコインの卒業価格（$69K mcap）」とは.md",
-    "Solanaでのトークンローンチが熱い理由.md",
-    "「さとし貯金ノート」のマネタイズ戦略.md",
-    "60_Private_Work/Personal_Projects/さとし貯金/Claude Codeで実用的なWebサービスを作る｜himara2.md",
-    "satoshi-saving-notebook/satoshi-saving-notebook/public/icon-generator.html",
-    "satoshi-saving-notebook/satoshi-saving-notebook/src/components/PWASetup.tsx",
-    "satoshi-saving-notebook/satoshi-saving-notebook/src/lib/pwa.ts",
-    "satoshi-saving-notebook/satoshi-saving-notebook/src/components/PWAInstaller.tsx",
-    "satoshi-saving-notebook/satoshi-saving-notebook/public/sw.js",
-    "satoshi-saving-notebook/satoshi-saving-notebook/public/manifest.json",
-    "satoshi-saving-notebook/firestore.rules",
-    "satoshi-saving-notebook/docs/CALCULATION_LOGIC.md",
-    "satoshi-saving-notebook/docs/spec.md",
-    "satoshi-saving-notebook/node_modules/@tanstack/react-query/build/codemods/src/v5/keep-previous-data/README.md",
-    "satoshi-saving-notebook/node_modules/websocket-extensions/lib/pipeline/README.md",
-    "satoshi-saving-notebook/node_modules/protobufjs/ext/descriptor/README.md",
-    "satoshi-saving-notebook/node_modules/protobufjs/ext/debug/README.md",
-    "satoshi-saving-notebook/node_modules/axios/lib/helpers/README.md",
-    "satoshi-saving-notebook/node_modules/axios/lib/env/README.md",
-    "satoshi-saving-notebook/node_modules/axios/lib/core/README.md",
-    "satoshi-saving-notebook/node_modules/axios/lib/adapters/README.md",
-    "satoshi-saving-notebook/node_modules/protobufjs/google/README.md",
-    "satoshi-saving-notebook/node_modules/@protobufjs/base64/README.md",
-    "satoshi-saving-notebook/node_modules/@types/node/README.md",
-    "satoshi-saving-notebook/node_modules/@protobufjs/pool/README.md",
-    "satoshi-saving-notebook/node_modules/@protobufjs/inquire/README.md",
-    "satoshi-saving-notebook/node_modules/@tanstack/react-query/README.md",
-    "satoshi-saving-notebook/node_modules/@protobufjs/utf8/README.md",
-    "satoshi-saving-notebook/satoshi-saving-notebook/node_modules/@tabler/icons/categories/outline/Zodiac/zodiac-sagittarius.svg",
-    "satoshi-saving-notebook/satoshi-saving-notebook/node_modules/@tabler/icons/categories/outline/Zodiac/zodiac-scorpio.svg",
-    "satoshi-saving-notebook/satoshi-saving-notebook/node_modules/@tabler/icons/categories/outline/Zodiac/zodiac-virgo.svg",
-    "satoshi-saving-notebook/satoshi-saving-notebook/node_modules/@tabler/icons/categories/outline/Zodiac/zodiac-taurus.svg",
-    "satoshi-saving-notebook/satoshi-saving-notebook/node_modules/@tabler/icons/categories/outline/Zodiac/zodiac-pisces.svg",
-    "satoshi-saving-notebook/satoshi-saving-notebook/node_modules/@tabler/icons/categories/outline/Zodiac/zodiac-libra.svg",
-    "satoshi-saving-notebook/satoshi-saving-notebook/node_modules/@tabler/icons/categories/outline/Zodiac/zodiac-leo.svg",
-    "satoshi-saving-notebook/satoshi-saving-notebook/node_modules/@tabler/icons/categories/outline/Zodiac/zodiac-gemini.svg",
-    "satoshi-saving-notebook/satoshi-saving-notebook/node_modules/@tabler/icons/categories/outline/Zodiac/zodiac-aries.svg",
-    "satoshi-saving-notebook/satoshi-saving-notebook/node_modules/@tabler/icons/categories/outline/Zodiac/zodiac-capricorn.svg",
-    "無題のファイル.canvas"
+    "Clippings/TIME100 Most Influential Companies 2025 Polymarket.md",
+    "40_Resources/News_Articles/2025/TIME100 Most Influential Companies 2025 Polymarket.md",
+    "30_Content_Creation/Blog_Posts/Published/予測市場Polymarket_なぜTIME100に選ばれたのか_20250128.md",
+    "50_Knowledge_Base/Cursor_Tips/AIの自律開発を目指すためのCursorを用いたドキュメント管理術.md",
+    "Clippings/Key U.S. Senator Tells White House Crypto Market Structure Bill Will Be Done by Sept. 30 1.md",
+    "Clippings/Why Every Bank Needs a Digital Asset Strategy.md",
+    "Clippings/Yamlから始める要件定義駆動開発｜そら ☁️ AI × Dify 自動化オタク📱.md",
+    "Clippings/DeFi lending hits record $55 billion TVL as Aave, Maple, and Morpho lead the charge.md",
+    "Clippings/Corporate crypto treasury bubble risks are real but more nuanced than in past boom-and-bust cycles, analyst says.md",
+    "Clippings/Key U.S. Senator Tells White House Crypto Market Structure Bill Will Be Done by Sept. 30.md",
+    "Clippings/Fed Chair sees crypto going mainstream, expects more bank engagement.md",
+    "50_Knowledge_Base/Prompt_Library/価格インパクトが最大になり得るファンダメンタル要因を抽出.md",
+    "50_Knowledge_Base/Prompt_Library/機関投資家レベルのリサーチ Prompt.md",
+    "50_Knowledge_Base/AI_Tools_HowTo/n8nワークフローへの反映方法.md",
+    "50_Knowledge_Base/Cursor_Tips/GitHubの承認プロセスの自動化.md",
+    "ワイオミング州WYSTステーブルコインのタイムスケジュール.md",
+    "🔷深掘りワークフロー.md",
+    "2025年6月 ポートフォリオ 01.md",
+    "🔷デイリーニュース：深掘りワークフロー.md",
+    "50_Knowledge_Base/Cursor_Tips/Claude Code 版 Orchestaror で複雑なタスクをステップ実行する.md",
+    "99_Templates/cursor_snippets.code-snippets",
+    "99_Templates/Cursor_コマンド_チートシート.md",
+    "マクロ視点のマーケット考察（0625投稿）.md",
+    "50_Knowledge_Base/Cursor_Tips/Claude Code（主にCursorエディタ上で利用）の高度な機能.md",
+    "TSUDOIでの暗号資産ファンダメンタル分析プロンプト・テンプレート.md",
+    "2025年6月 ポートフォリオ 総合要約.md",
+    "2025年6月 ポートフォリオ 03.md",
+    "40_Resources/News_Articles/01_January",
+    "btc-tracker-improved/start-server.bat",
+    "btc-tracker-improved/style.css",
+    "btc-tracker-improved/index.html",
+    "btc-tracker-improved/app.js",
+    "btc-tracker-improved",
+    "Clippings",
+    "Attachments",
+    "99_Templates",
+    "60_Private_Work/Learning_Log/自動化テンプレ案/Pasted image 20250606082934.png",
+    "00_Inbox/20250603/Pasted image 20250603124942.png"
   ]
 }

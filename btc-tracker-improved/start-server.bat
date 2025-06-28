@@ -1,0 +1,9 @@
+@echo off
+echo BTC Tracker Local Server Starting...
+echo.
+echo Opening in browser...
+start "" "http://localhost:8080"
+echo.
+echo Starting Python HTTP Server...
+python -m http.server 8080
+pause

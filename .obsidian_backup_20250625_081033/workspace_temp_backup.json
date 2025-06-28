@@ -1,0 +1,269 @@
+{
+  "main": {
+    "id": "cf94d2f7a6f1e7eb",
+    "type": "split",
+    "children": [
+      {
+        "id": "17b6b88bc217962c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "bfeb191fbf5ce6d6",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "新規タブ"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "56925ecc50c049c7",
+    "type": "split",
+    "children": [
+      {
+        "id": "1ed02d6c33e962ff",
+        "type": "tabs",
+        "dimension": 79.77755308392315,
+        "children": [
+          {
+            "id": "578e263f04a0a7a7",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "ファイルエクスプローラ"
+            }
+          },
+          {
+            "id": "c4e478bff26cfd10",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#米国規制",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "検索"
+            }
+          },
+          {
+            "id": "d2aa4334a4894c32",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "ブックマーク"
+            }
+          }
+        ]
+      },
+      {
+        "id": "9737899f785f55c8",
+        "type": "tabs",
+        "dimension": 20.222446916076844,
+        "children": [
+          {
+            "id": "d07d5908e6fb6f2b",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "グラフビュー"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 406.5
+  },
+  "right": {
+    "id": "d0378013f13c7bc6",
+    "type": "split",
+    "children": [
+      {
+        "id": "4bee4177e2583500",
+        "type": "tabs",
+        "dimension": 60.562015503875976,
+        "children": [
+          {
+            "id": "5a32518f09dcabae",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "バックリンク"
+            }
+          },
+          {
+            "id": "d78cd363a0c9d195",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "クリプト/GENIUS法案が既存暗号資産にもたらす“相乗効果”の整理.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "GENIUS法案が既存暗号資産にもたらす“相乗効果”の整理からのアウトゴーイングリンク"
+            }
+          },
+          {
+            "id": "28fc50556a95278d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "タグ"
+            }
+          },
+          {
+            "id": "961f404b3cb85d71",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "風が吹けば桶屋が儲かるサービス/動的相関図構築に学ぶ他業界の事例.md",
+                "followCursor": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "動的相関図構築に学ぶ他業界の事例のアウトライン"
+            }
+          },
+          {
+            "id": "3c7b03bbbfbcc257",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "すべてのプロパティ"
+            }
+          }
+        ],
+        "currentTab": 2
+      },
+      {
+        "id": "d0c060c4ef15cf46",
+        "type": "tabs",
+        "dimension": 39.43798449612403,
+        "children": [
+          {
+            "id": "619cd876730715e1",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Calendar"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 357.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:クイックスイッチャーを開く": false,
+      "graph:グラフビューを開く": false,
+      "canvas:新規キャンバスを作成": false,
+      "templates:テンプレートを挿入": false,
+      "command-palette:コマンドパレットを開く": false,
+      "audio-recorder:録音の開始/停止": false,
+      "daily-notes:今日のデイリーノートを開く": false,
+      "omnisearch:Omnisearch": false,
+      "templater-obsidian:Templater": false
+    }
+  },
+  "active": "bfeb191fbf5ce6d6",
+  "lastOpenFiles": [
+    "Cursor/node_modules/@mantine/notifications/cjs/get-grouped-notifications/get-grouped-notifications.cjs.map",
+    "Cursor/node_modules/@mantine/notifications/esm/get-auto-close/get-auto-close.mjs.map",
+    "Cursor/node_modules/@mantine/notifications/cjs/get-grouped-notifications/get-grouped-notifications.cjs",
+    "Cursor/node_modules/@mantine/notifications/esm/get-grouped-notifications/get-grouped-notifications.mjs.map",
+    "Cursor/node_modules/@mantine/notifications/cjs/get-auto-close/get-auto-close.cjs.map",
+    "Cursor/node_modules/@mantine/notifications/cjs/get-auto-close/get-auto-close.cjs",
+    "Cursor/node_modules/@mantine/notifications/esm/get-auto-close/get-auto-close.mjs",
+    "Cursor/node_modules/@mantine/notifications/lib/get-grouped-notifications/get-grouped-notifications.d.ts",
+    "Cursor/node_modules/@mantine/notifications/esm/get-grouped-notifications/get-grouped-notifications.mjs",
+    "Cursor/node_modules/@mantine/notifications/lib/get-auto-close/get-auto-close.d.ts",
+    "Cursor/node_modules/@mantine/notifications/cjs/Notifications.cjs",
+    "Cursor/node_modules/@mantine/notifications/README.md",
+    "Cursor/node_modules/react-dom/README.md",
+    "Cursor/node_modules/wrap-ansi-cjs/node_modules/string-width/readme.md",
+    "Cursor/node_modules/wrap-ansi-cjs/node_modules/emoji-regex/README.md",
+    "Cursor/node_modules/wrap-ansi-cjs/node_modules/ansi-regex/readme.md",
+    "Cursor/node_modules/wrap-ansi-cjs/node_modules/strip-ansi/readme.md",
+    "Cursor/node_modules/wrap-ansi-cjs/readme.md",
+    "Cursor/node_modules/semver/README.md",
+    "Cursor/node_modules/scheduler/README.md",
+    "Cursor/node_modules/yargs/node_modules/string-width/readme.md",
+    "Cursor/node_modules/yargs/node_modules/ansi-regex/readme.md",
+    "Cursor/node_modules/yargs/node_modules/strip-ansi/readme.md",
+    "Cursor/node_modules/yargs/node_modules/emoji-regex/README.md",
+    "Cursor/node_modules/yargs/README.md",
+    "Cursor/node_modules/@mantine/form/README.md",
+    "Cursor/node_modules/flatted/README.md",
+    "Cursor/node_modules/@tabler/icons/categories/outline/Symbols/venus.svg",
+    "Cursor/node_modules/@tabler/icons/categories/outline/Symbols/yin-yang.svg",
+    "Cursor/node_modules/@tabler/icons/categories/outline/Symbols/trademark.svg",
+    "Cursor/node_modules/@tabler/icons/categories/outline/Symbols/servicemark.svg",
+    "Cursor/node_modules/@tabler/icons/categories/outline/Symbols/torii.svg",
+    "Cursor/node_modules/@tabler/icons/categories/outline/Symbols/registered.svg",
+    "Cursor/node_modules/@tabler/icons/categories/outline/Symbols/ribbon-health.svg",
+    "Cursor/node_modules/@tabler/icons/categories/outline/Symbols/recycle-off.svg",
+    "Cursor/node_modules/@tabler/icons/categories/outline/Symbols/rating-21-plus.svg",
+    "Cursor/node_modules/@tabler/icons/categories/outline/Symbols/recycle.svg",
+    "Cursor/node_modules/@firebase/auth/README.md",
+    "Cursor/node_modules/es-abstract/README.md",
+    "Cursor/node_modules/es-abstract/CHANGELOG.md",
+    "Cursor/node_modules/firebase/README.md",
+    "Cursor/node_modules/@rushstack/eslint-patch/README.md",
+    "Cursor/node_modules/@rushstack/eslint-patch/CHANGELOG.md",
+    "Cursor/node_modules/@rtsao/scc/README.md",
+    "Cursor/node_modules/@babel/runtime/README.md",
+    "Cursor/node_modules/@alloc/quick-lru/readme.md",
+    "無題のファイル.canvas"
+  ]
+}

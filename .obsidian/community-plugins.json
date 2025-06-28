@@ -1,10 +1,8 @@
 [
   "calendar",
-  "obsidian-icon-folder",
-  "colored-tags",
-  "file-explorer-note-count",
-  "file-explorer-plus",
   "omnisearch",
-  "update-time-on-edit",
-  "templater-obsidian"
+  "templater-obsidian",
+  "colored-tags",
+  "excalibrain",
+  "dataview"
 ]

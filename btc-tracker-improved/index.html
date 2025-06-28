@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTC積立管理アプリ</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app">
+        <!-- 初期設定画面 -->
+        <div id="setup-screen" class="screen">
+            <div class="container">
+                <div class="setup-header">
+                    <h1>BTC積立設定</h1>
+                    <p>目標を設定してBTC積立を始めましょう</p>
+                </div>
+                
+                <div class="card setup-card">
+                    <div class="card__body">
+                        <div class="form-group">
+                            <label class="form-label">
+                                目標BTC数: <span class="input-value" id="target-btc-display">1.0</span> BTC
+                            </label>
+                            <div class="input-combo">
+                                <input type="range" id="target-btc-slider" class="slider" 
+                                       min="0.1" max="10" step="0.1" value="1.0">
+                                <input type="number" id="target-btc-input" class="form-control number-input" 
+                                       min="0.1" max="50" step="0.1" value="1.0">
+                                <span class="input-unit">BTC</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">
+                                達成希望期間: <span class="input-value" id="period-display">24</span> ヶ月
+                            </label>
+                            <div class="input-combo">
+                                <input type="range" id="period-slider" class="slider" 
+                                       min="6" max="120" step="6" value="24">
+                                <input type="number" id="period-input" class="form-control number-input" 
+                                       min="6" max="120" step="1" value="24">
+                                <span class="input-unit">ヶ月</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">
+                                毎月の積立額: <span class="input-value" id="monthly-amount-display">50,000</span> 円
+                            </label>
+                            <div class="input-combo">
+                                <input type="range" id="monthly-amount-slider" class="slider" 
+                                       min="10000" max="500000" step="5000" value="50000">
+                                <input type="number" id="monthly-amount-input" class="form-control number-input" 
+                                       min="10000" max="1000000" step="1000" value="50000">
+                                <span class="input-unit">円</span>
+                            </div>
+                        </div>
+                        
+                        <div class="calculation-mode">
+                            <label class="form-label">計算モード</label>
+                            <div class="mode-buttons">
+                                <button type="button" class="mode-btn active" data-mode="monthly">
+                                    📊 月額を自動計算
+                                </button>
+                                <button type="button" class="mode-btn" data-mode="period">
+                                    ⏱️ 期間を自動計算
+                                </button>
+                                <button type="button" class="mode-btn" data-mode="manual">
+                                    ✋ 手動設定
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="simulation-result">
+                            <h3>シミュレーション結果</h3>
+                            <div class="simulation-grid">
+                                <div class="simulation-item">
+                                    <span class="label">現在のBTC価格</span>
+                                    <span class="value" id="current-price">¥15,000,000</span>
+                                </div>
+                                <div class="simulation-item">
+                                    <span class="label">月次必要額（目安）</span>
+                                    <span class="value" id="estimated-monthly">¥625,000</span>
+                                </div>
+                                <div class="simulation-item">
+                                    <span class="label">総積立予想額</span>
+                                    <span class="value" id="total-estimated">¥15,000,000</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn--primary btn--full-width" id="start-saving">
+                            積立を開始する
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- メインアプリ画面 -->
+        <div id="main-app" class="screen hidden">
+            <!-- タブナビゲーション -->
+            <nav class="tab-nav">
+                <button class="tab-button active" data-tab="dashboard">
+                    <span>📊</span>
+                    <span>ダッシュボード</span>
+                </button>
+                <button class="tab-button" data-tab="purchase">
+                    <span>💰</span>
+                    <span>購入記録</span>
+                </button>
+                <button class="tab-button" data-tab="settings">
+                    <span>⚙️</span>
+                    <span>設定</span>
+                </button>
+            </nav>
+
+            <!-- ダッシュボード -->
+            <div id="dashboard-tab" class="tab-content active">
+                <div class="container">
+                    <div class="dashboard-header">
+                        <h2>BTC積立進捗</h2>
+                        <div class="current-price-widget">
+                            <span class="price-label">現在価格</span>
+                            <span class="price-value" id="dashboard-price">¥15,000,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-section">
+                        <div class="progress-circle-container">
+                            <div class="progress-circle" id="progress-circle">
+                                <div class="progress-text">
+                                    <span class="progress-percent" id="progress-percent">15%</span>
+                                    <span class="progress-label">達成</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">現在保有</span>
+                                <span class="stat-value" id="current-btc">0.150 BTC</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">目標まで</span>
+                                <span class="stat-value" id="remaining-btc">0.850 BTC</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">投資総額</span>
+                                <span class="stat-value" id="total-invested">¥2,223,600</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 価格変動リスク分析セクション -->
+                    <div class="risk-analysis-section">
+                        <h3>📈 計画と現実の分析</h3>
+                        <div class="analysis-grid">
+                            <div class="analysis-card original-plan">
+                                <h4>🎯 当初計画</h4>
+                                <div class="plan-details">
+                                    <div class="plan-item">
+                                        <span class="label">計画時BTC価格</span>
+                                        <span class="value" id="original-btc-price">¥15,000,000</span>
+                                    </div>
+                                    <div class="plan-item">
+                                        <span class="label">計画達成日</span>
+                                        <span class="value" id="planned-completion">2027年3月</span>
+                                    </div>
+                                    <div class="plan-item">
+                                        <span class="label">月次必要額</span>
+                                        <span class="value" id="planned-monthly">¥625,000</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="analysis-card current-reality">
+                                <h4>📊 現在の状況</h4>
+                                <div class="reality-details">
+                                    <div class="reality-item">
+                                        <span class="label">現在のペース</span>
+                                        <span class="value" id="current-pace">順調</span>
+                                    </div>
+                                    <div class="reality-item">
+                                        <span class="label">新予測達成日</span>
+                                        <span class="value" id="predicted-completion">2027年5月</span>
+                                    </div>
+                                    <div class="reality-item deviation">
+                                        <span class="label">計画との差</span>
+                                        <span class="value" id="plan-deviation">+2ヶ月遅延</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="recommendation-card">
+                            <h4>💡 推奨アクション</h4>
+                            <div class="recommendation-content">
+                                <p id="recommendation-text">
+                                    BTCの価格上昇により、目標達成が2ヶ月遅れる見込みです。
+                                    当初計画通りに達成するには、月次積立額を<strong>¥75,000</strong>増額することをお勧めします。
+                                </p>
+                                <div class="action-buttons">
+                                    <button class="btn btn--primary" id="adjust-plan-btn">
+                                        📝 積立プランを調整
+                                    </button>
+                                    <button class="btn btn--secondary" id="maintain-plan-btn">
+                                        ✋ 現在のプランを維持
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-section">
+                        <h3>積立推移</h3>
+                        <div class="chart-container">
+                            <canvas id="progress-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 購入記録 -->
+            <div id="purchase-tab" class="tab-content">
+                <div class="container">
+                    <h2>購入記録</h2>
+                    
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>新規購入</h3>
+                            <form id="purchase-form">
+                                <div class="form-group">
+                                    <label class="form-label" for="purchase-date">購入日</label>
+                                    <input type="date" id="purchase-date" class="form-control" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label" for="purchase-amount">購入数量（BTC）</label>
+                                    <input type="number" id="purchase-amount" class="form-control" 
+                                           step="0.001" min="0.001" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label" for="purchase-price">購入時価格（円/BTC）</label>
+                                    <input type="number" id="purchase-price" class="form-control" 
+                                           min="1000000" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label" for="purchase-memo">メモ（任意）</label>
+                                    <input type="text" id="purchase-memo" class="form-control" 
+                                           placeholder="例：給料日、ボーナス、価格下落時の追加購入など">
+                                </div>
+                                
+                                <button type="submit" class="btn btn--primary btn--full-width purchase-btn">
+                                    💰 購入を記録する
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="purchase-history">
+                        <h3>購入履歴</h3>
+                        <div class="history-list" id="purchase-history">
+                            <!-- 購入履歴がここに動的に追加される -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 設定 -->
+            <div id="settings-tab" class="tab-content">
+                <div class="container">
+                    <h2>設定</h2>
+                    
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>目標設定</h3>
+                            <div class="form-group">
+                                <label class="form-label" for="settings-target-btc">目標BTC数</label>
+                                <select id="settings-target-btc" class="form-control">
+                                    <option value="0.1">0.1 BTC</option>
+                                    <option value="0.5">0.5 BTC</option>
+                                    <option value="1.0">1.0 BTC</option>
+                                    <option value="2.0">2.0 BTC</option>
+                                    <option value="5.0">5.0 BTC</option>
+                                    <option value="10.0">10.0 BTC</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="settings-period">達成希望期間</label>
+                                <select id="settings-period" class="form-control">
+                                    <option value="6">6ヶ月</option>
+                                    <option value="12">1年</option>
+                                    <option value="24">2年</option>
+                                    <option value="36">3年</option>
+                                    <option value="48">4年</option>
+                                    <option value="60">5年</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="settings-monthly-amount">毎月の積立額（円）</label>
+                                <input type="number" id="settings-monthly-amount" class="form-control" 
+                                       min="10000" max="500000" step="1000">
+                            </div>
+                            
+                            <button class="btn btn--primary btn--full-width" id="save-settings">
+                                設定を保存
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>その他設定</h3>
+                            <div class="form-group">
+                                <label class="form-label">
+                                    <input type="checkbox" id="sound-enabled" checked>
+                                    効果音を有効にする
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 達成アニメーション -->
+    <div id="achievement-modal" class="achievement-modal hidden">
+        <div class="achievement-content">
+            <div class="achievement-icon">🎉</div>
+            <h2 id="achievement-title">おめでとうございます！</h2>
+            <p id="achievement-message">目標の10%を達成しました！</p>
+            <button class="btn btn--primary" id="close-achievement">続ける</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
