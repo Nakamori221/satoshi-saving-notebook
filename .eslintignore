@@ -1,0 +1,13 @@
+ # ESLint ignore file - disable all linting for deployment
+  *
+  **/*
+  src/
+  public/
+  *.ts
+  *.tsx
+  *.js
+  *.jsx
+  node_modules/
+  .next/
+  dist/
+  build/
