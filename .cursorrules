@@ -29,6 +29,8 @@
 # /wt: 技術解説記事作成 (write --technical --explanation の短縮版)
 # /ws: SNS配信文作成 (write --sns --multi の短縮版)
 # /bt: ブログ→Twitter変換 (convert --blog-to-thread の短縮版)
+# /blog-kit: 統合マーケティング素材作成 (blog --marketing-kit の短縮版)
+# /marp: Marp形式プレゼンテーション作成 (create --marp --presentation の短縮版)
 
 # ========== アナリスト業務系 ==========
 # /pr: ポートフォリオ分析 (analyze --portfolio --review の短縮版)
@@ -163,6 +165,25 @@
 # - 各投稿の独立性と全体の一貫性を両立
 # - リプライチェーン形式で構成
 
+# /blog-kit: 統合マーケティング素材作成
+# 1つのトピックから完全なマーケティングキットを一括生成
+# - ブログ/[記事タイトル]/ フォルダを自動作成
+# - 記事.md: メインブログ記事 + タイトル候補 + サムネ候補
+# - X投稿.md: Twitter用スレッド + タイトル候補 + サムネ候補  
+# - Instagram投稿.md: Instagram投稿文 + タイトル候補 + サムネ候補
+# - 各プラットフォーム最適化した内容で統一されたメッセージング
+
+# /marp: Marp形式プレゼンテーション作成
+# 提供された情報から「1スライド1メッセージ」を徹底したMarpプレゼンテーションを作成
+# - 重要なトピックごとに1スライド1つの伝えたいことで分割（枚数は内容に応じて自然決定）
+# - 重要数値は大きく中央配置（例：# 🚀 **$55.69B**）
+# - 表形式を避け、数値の前後比較は矢印で表現（例：$16.87B ➜ **$26.09B**）
+# - 各スライドに投資判断材料・戦略的含意を必ず含める（✅🎯💡🔮マーク活用）
+# - 99_Templates/Marp_プレゼンテーション作成テンプレート.mdの6つのスライドパターンを活用
+# - YAML Frontmatter（16:9、ページ番号、ヘッダー・フッター）を自動設定
+# - 30_Content_Creation/Blog_Posts/Drafts/に[タイトル]_プレゼン資料.mdとして保存
+# - Markdownファイルのみ作成（HTML変換は実施しない）
+
 # ==================== アナリスト業務関連 ====================
 
 # /analyze --portfolio --review: ポートフォリオ総合分析
@@ -212,12 +233,14 @@
 # 【保存先ディレクトリ】
 # - ブログ記事: 30_Content_Creation/Blog_Posts/Drafts/
 # - X投稿シリーズ: 30_Content_Creation/X_Threads/Drafts/
+# - Marpプレゼンテーション: 30_Content_Creation/Blog_Posts/Drafts/
 # - 分析レポート: 20_Topics_and_Insights/Analysis_Reports/
 # - リサーチ結果: 50_Knowledge_Base/Research_Results/
 # - テンプレート: 99_Templates/
 
 # 【ファイル命名規則】
 # - ブログ: [記事タイトル]_[YYYYMMDD].md
+# - Marpプレゼンテーション: [タイトル]_プレゼン資料.md
 # - 分析: [銘柄名]_分析レポート_[YYYYMMDD].md
 # - リサーチ: [トピック]_深掘り調査_[YYYYMMDD].md
 

@@ -4,179 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "c4770a36f5993390",
+        "id": "06816fb546523166",
         "type": "tabs",
         "children": [
           {
-            "id": "6fdb160ca223b4a9",
+            "id": "175b04afcd6a6dee",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "40_Resources/References/06_June/2025年6月27日 バディさん.md",
+                "file": "30_Content_Creation/Blog_Posts/Drafts/ブログ/金融庁が仮想通貨に革命を起こす！税率55%→20%の衝撃変化/記事.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025年6月27日 バディさん"
-            }
-          },
-          {
-            "id": "54b751f9214950c1",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "マクロ視点のマーケット考察（0625投稿）.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "マクロ視点のマーケット考察（0625投稿）"
-            }
-          },
-          {
-            "id": "5c1c0d0df4a355ef",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Clippings/White House, lawmakers target September to move sweeping crypto legislation.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "White House, lawmakers target September to move sweeping crypto legislation"
-            }
-          },
-          {
-            "id": "ef13b49f71e4117d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2025年6月 ポートフォリオ 01.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2025年6月 ポートフォリオ 01"
-            }
-          },
-          {
-            "id": "32f15fb5f03a2039",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2025年6月 ポートフォリオ 02.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2025年6月 ポートフォリオ 02"
-            }
-          },
-          {
-            "id": "d4cdeb0c9d902f56",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2025年6月 ポートフォリオ 03.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2025年6月 ポートフォリオ 03"
-            }
-          },
-          {
-            "id": "a06c32999519c584",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2025年6月 ポートフォリオ 総合要約.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2025年6月 ポートフォリオ 総合要約"
-            }
-          },
-          {
-            "id": "5acb18b7ee3a3d17",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "TSUDOIでの暗号資産ファンダメンタル分析プロンプト・テンプレート.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "TSUDOIでの暗号資産ファンダメンタル分析プロンプト・テンプレート"
-            }
-          },
-          {
-            "id": "abb06a78fa0c734e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "50_Knowledge_Base/Cursor_Tips/Claude Code 版 Orchestaror で複雑なタスクをステップ実行する.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Claude Code 版 Orchestaror で複雑なタスクをステップ実行する"
-            }
-          },
-          {
-            "id": "cc60e67897c97ca3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "50_Knowledge_Base/Cursor_Tips/GitHubの承認プロセスの自動化.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "GitHubの承認プロセスの自動化"
-            }
-          },
-          {
-            "id": "96e87ccb6e354cf9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Clippings/Key U.S. Senator Tells White House Crypto Market Structure Bill Will Be Done by Sept. 30 1.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Key U.S. Senator Tells White House Crypto Market Structure Bill Will Be Done by Sept. 30 1"
-            }
-          },
-          {
-            "id": "17dde2ec823553ac",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "30_Content_Creation/Blog_Posts/Published/予測市場Polymarket_なぜTIME100に選ばれたのか_20250128.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "予測市場Polymarket_なぜTIME100に選ばれたのか_20250128"
+              "title": "記事"
             }
           }
-        ],
-        "currentTab": 11
+        ]
       }
     ],
     "direction": "vertical"
@@ -251,7 +96,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 253.5
   },
   "right": {
     "id": "f66069efb1066384",
@@ -358,20 +203,44 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "17dde2ec823553ac",
+  "active": "175b04afcd6a6dee",
   "lastOpenFiles": [
+    "99_Templates/記事バナー生成プロンプトテンプレート.md",
+    "30_Content_Creation/Blog_Posts/Drafts/ブログ/金融庁が仮想通貨に革命を起こす！税率55%→20%の衝撃変化/記事.md",
+    "30_Content_Creation/Blog_Posts/Drafts/ブログ/金融庁が仮想通貨に革命を起こす！税率55%→20%の衝撃変化/Instagram投稿.md",
+    "30_Content_Creation/Blog_Posts/Drafts/ブログ/金融庁が仮想通貨に革命を起こす！税率55%→20%の衝撃変化/X投稿.md",
+    "Clippings/金融庁、暗号資産を「金商法」対象へ本格検討｜分離課税20％・ETF承認を視野に制度改革へ.md",
+    "30_Content_Creation/Blog_Posts/Drafts/ブログ/金融庁が仮想通貨に革命を起こす！税率55%→20%の衝撃変化",
+    "30_Content_Creation/Blog_Posts/Drafts/金融庁_暗号資産_金商法移行_プレゼン資料.md",
+    "30_Content_Creation/X_Threads/Drafts/20250629_ポッドキャスト告知投稿.md",
+    "30_Content_Creation/X_Threads/Drafts/20250629_デイリーニュース_X投稿シリーズ.md",
+    "30_Content_Creation/X_Threads/Drafts/ビットコインドミナンス62%回復_X投稿シリーズ（アルゴリズム最適化版）.md",
+    "30_Content_Creation/X_Threads/Drafts/合成ドルVS法定通貨型ステーブルコイン_教育スレッド.md",
+    "99_Templates/ブログ記事⇒X投稿複数化プロンプト.md",
+    "2025-06-29.md",
+    "00_Daily/2025-06-29.md",
+    "30_Content_Creation/Blog_Posts/Drafts/ブログ/BlackRock×Ethenaが始める『24時間いつでも交換』の新時代/Instagram投稿.md",
+    "30_Content_Creation/Blog_Posts/Drafts/ブログ/BlackRock×Ethenaが始める『24時間いつでも交換』の新時代/X投稿.md",
+    "30_Content_Creation/Blog_Posts/Drafts/ブログ/BlackRock×Ethenaが始める『24時間いつでも交換』の新時代/記事.md",
+    "30_Content_Creation/Blog_Posts/Drafts/ブログ/BlackRock×Ethenaが始める『24時間いつでも交換』の新時代",
+    "30_Content_Creation/Blog_Posts/Drafts/ブログ",
+    "クリプトニュース深掘りプロンプト.md",
+    "30_Content_Creation/Blog_Posts/Drafts/2024年6月暗号資産市場総括_プレゼン資料.html",
+    "30_Content_Creation/Blog_Posts/Drafts/2024年6月暗号資産市場総括_プレゼン資料.md",
+    "99_Templates/Marp_プレゼンテーション作成テンプレート.md",
+    "30_Content_Creation/Blog_Posts/Drafts/DeFiレンディング記録更新_プレゼン資料.html",
+    "30_Content_Creation/Blog_Posts/Drafts/DeFiレンディング記録更新_プレゼン資料.md",
+    "30_Content_Creation/Blog_Posts/Drafts/企業のクリプト財務戦略とバブルリスクの真実/企業クリプト財務戦略_スライド資料.md",
+    "30_Content_Creation/Blog_Posts/Drafts/企業のクリプト財務戦略とバブルリスクの真実/Instagram投稿.md",
+    "30_Content_Creation/Blog_Posts/Drafts/企業のクリプト財務戦略とバブルリスクの真実/X投稿.md",
+    "30_Content_Creation/Blog_Posts/Drafts/企業のクリプト財務戦略とバブルリスクの真実/記事.md",
+    "30_Content_Creation/Blog_Posts/Drafts/企業のクリプト財務戦略とバブルリスクの真実",
+    "文字起こし加工プロンプト.md",
+    "00_Daily/2025-06-28.md",
     "src/app/api/btc-price/route.ts",
     "src/app/api/btc-price",
     "src/components/SavingsCalculatorWithData.tsx",
     "src/components/SavingsCalculator.tsx",
-    "src/components/PWASetup.tsx",
-    "src/components/GoalSettingsModal.tsx",
-    "src/components/PWAInstaller.tsx",
-    "src/types/index.ts",
-    "src/components/AuthWrapper.tsx",
-    "src/lib/localStorage.ts",
-    "src/lib/pwa.ts",
-    "src/README.md",
     "public/window.svg",
     "public/vercel.svg",
     "public/file.svg",
@@ -380,31 +249,7 @@
     "next.svg",
     "globe.svg",
     "file.svg",
-    "README.md",
     "temp_repo_check/public/window.svg",
-    "temp_repo_check/public/vercel.svg",
-    "temp_repo_check/src/README.md",
-    "Clippings/TIME100 Most Influential Companies 2025 Polymarket.md",
-    "40_Resources/News_Articles/2025/TIME100 Most Influential Companies 2025 Polymarket.md",
-    "30_Content_Creation/Blog_Posts/Published/予測市場Polymarket_なぜTIME100に選ばれたのか_20250128.md",
-    "50_Knowledge_Base/Cursor_Tips/AIの自律開発を目指すためのCursorを用いたドキュメント管理術.md",
-    "Clippings/Key U.S. Senator Tells White House Crypto Market Structure Bill Will Be Done by Sept. 30 1.md",
-    "Clippings/Why Every Bank Needs a Digital Asset Strategy.md",
-    "Clippings/Yamlから始める要件定義駆動開発｜そら ☁️ AI × Dify 自動化オタク📱.md",
-    "Clippings/DeFi lending hits record $55 billion TVL as Aave, Maple, and Morpho lead the charge.md",
-    "Clippings/Corporate crypto treasury bubble risks are real but more nuanced than in past boom-and-bust cycles, analyst says.md",
-    "Clippings/Key U.S. Senator Tells White House Crypto Market Structure Bill Will Be Done by Sept. 30.md",
-    "Clippings/Fed Chair sees crypto going mainstream, expects more bank engagement.md",
-    "50_Knowledge_Base/Prompt_Library/価格インパクトが最大になり得るファンダメンタル要因を抽出.md",
-    "50_Knowledge_Base/Prompt_Library/機関投資家レベルのリサーチ Prompt.md",
-    "50_Knowledge_Base/AI_Tools_HowTo/n8nワークフローへの反映方法.md",
-    "50_Knowledge_Base/Cursor_Tips/GitHubの承認プロセスの自動化.md",
-    "ワイオミング州WYSTステーブルコインのタイムスケジュール.md",
-    "🔷深掘りワークフロー.md",
-    "2025年6月 ポートフォリオ 01.md",
-    "🔷デイリーニュース：深掘りワークフロー.md",
-    "50_Knowledge_Base/Cursor_Tips/Claude Code 版 Orchestaror で複雑なタスクをステップ実行する.md",
-    "99_Templates/Cursor_コマンド_チートシート.md",
-    "マクロ視点のマーケット考察（0625投稿）.md"
+    "temp_repo_check/public/vercel.svg"
   ]
 }
