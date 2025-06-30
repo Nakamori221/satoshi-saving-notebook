@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "30_Content_Creation/Blog_Posts/Drafts/ブログ/金融庁が仮想通貨に革命を起こす！税率55%→20%の衝撃変化/記事.md",
+                "file": "Clippings/Lido gears up for Dual Governance.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "記事"
+              "title": "Lido gears up for Dual Governance"
             }
           }
         ]
@@ -205,8 +205,13 @@
   },
   "active": "175b04afcd6a6dee",
   "lastOpenFiles": [
-    "99_Templates/記事バナー生成プロンプトテンプレート.md",
+    "Clippings/Firedancer begins delegating stake to Solana validators.md",
+    "Clippings/Lido gears up for Dual Governance.md",
+    "Clippings/Why VCs are doubling funding to $25bn as new era dawns for crypto.md",
+    "Clippings/White House Insider Reveals Crypto Bill Timeline ‘July Will Be a Big Month’ – Regulation Bitcoin News.md",
+    "Clippings/DeFi TVL Nears $60B on Institutional Adoption Wave; Polyhedra (ZKJ) Crashes 80% After Liquidity Attack  Flash News Detail.md",
     "30_Content_Creation/Blog_Posts/Drafts/ブログ/金融庁が仮想通貨に革命を起こす！税率55%→20%の衝撃変化/記事.md",
+    "99_Templates/記事バナー生成プロンプトテンプレート.md",
     "30_Content_Creation/Blog_Posts/Drafts/ブログ/金融庁が仮想通貨に革命を起こす！税率55%→20%の衝撃変化/Instagram投稿.md",
     "30_Content_Creation/Blog_Posts/Drafts/ブログ/金融庁が仮想通貨に革命を起こす！税率55%→20%の衝撃変化/X投稿.md",
     "Clippings/金融庁、暗号資産を「金商法」対象へ本格検討｜分離課税20％・ETF承認を視野に制度改革へ.md",
@@ -231,12 +236,7 @@
     "30_Content_Creation/Blog_Posts/Drafts/DeFiレンディング記録更新_プレゼン資料.html",
     "30_Content_Creation/Blog_Posts/Drafts/DeFiレンディング記録更新_プレゼン資料.md",
     "30_Content_Creation/Blog_Posts/Drafts/企業のクリプト財務戦略とバブルリスクの真実/企業クリプト財務戦略_スライド資料.md",
-    "30_Content_Creation/Blog_Posts/Drafts/企業のクリプト財務戦略とバブルリスクの真実/Instagram投稿.md",
-    "30_Content_Creation/Blog_Posts/Drafts/企業のクリプト財務戦略とバブルリスクの真実/X投稿.md",
-    "30_Content_Creation/Blog_Posts/Drafts/企業のクリプト財務戦略とバブルリスクの真実/記事.md",
     "30_Content_Creation/Blog_Posts/Drafts/企業のクリプト財務戦略とバブルリスクの真実",
-    "文字起こし加工プロンプト.md",
-    "00_Daily/2025-06-28.md",
     "src/app/api/btc-price/route.ts",
     "src/app/api/btc-price",
     "src/components/SavingsCalculatorWithData.tsx",
